@@ -1,0 +1,7005 @@
+# seerr.SettingsApi
+
+All URIs are relative to *http://localhost:5055/api/v1*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**create_cache_dns_flush**](SettingsApi.md#create_cache_dns_flush) | **POST** /settings/cache/dns/{dnsEntry}/flush | Flush a specific DNS cache entry
+[**create_cache_flush**](SettingsApi.md#create_cache_flush) | **POST** /settings/cache/{cacheId}/flush | Flush a specific cache
+[**create_discover**](SettingsApi.md#create_discover) | **POST** /settings/discover | Batch update all sliders.
+[**create_discover_add**](SettingsApi.md#create_discover_add) | **POST** /settings/discover/add | Add a new slider
+[**create_initialize**](SettingsApi.md#create_initialize) | **POST** /settings/initialize | Initialize application
+[**create_jellyfin**](SettingsApi.md#create_jellyfin) | **POST** /settings/jellyfin | Update Jellyfin settings
+[**create_jellyfin_sync**](SettingsApi.md#create_jellyfin_sync) | **POST** /settings/jellyfin/sync | Start full Jellyfin library sync
+[**create_jobs_cancel**](SettingsApi.md#create_jobs_cancel) | **POST** /settings/jobs/{jobId}/cancel | Cancel a specific job
+[**create_jobs_run**](SettingsApi.md#create_jobs_run) | **POST** /settings/jobs/{jobId}/run | Invoke a specific job
+[**create_jobs_schedule**](SettingsApi.md#create_jobs_schedule) | **POST** /settings/jobs/{jobId}/schedule | Modify job schedule
+[**create_main**](SettingsApi.md#create_main) | **POST** /settings/main | Update main settings
+[**create_main_regenerate**](SettingsApi.md#create_main_regenerate) | **POST** /settings/main/regenerate | Get main settings with newly-generated API key
+[**create_network**](SettingsApi.md#create_network) | **POST** /settings/network | Update network settings
+[**create_notifications_discord**](SettingsApi.md#create_notifications_discord) | **POST** /settings/notifications/discord | Update Discord notification settings
+[**create_notifications_email**](SettingsApi.md#create_notifications_email) | **POST** /settings/notifications/email | Update email notification settings
+[**create_notifications_gotify**](SettingsApi.md#create_notifications_gotify) | **POST** /settings/notifications/gotify | Update Gotify notification settings
+[**create_notifications_ntfy**](SettingsApi.md#create_notifications_ntfy) | **POST** /settings/notifications/ntfy | Update ntfy.sh notification settings
+[**create_notifications_pushbullet**](SettingsApi.md#create_notifications_pushbullet) | **POST** /settings/notifications/pushbullet | Update Pushbullet notification settings
+[**create_notifications_pushover**](SettingsApi.md#create_notifications_pushover) | **POST** /settings/notifications/pushover | Update Pushover notification settings
+[**create_notifications_slack**](SettingsApi.md#create_notifications_slack) | **POST** /settings/notifications/slack | Update Slack notification settings
+[**create_notifications_telegram**](SettingsApi.md#create_notifications_telegram) | **POST** /settings/notifications/telegram | Update Telegram notification settings
+[**create_notifications_webhook**](SettingsApi.md#create_notifications_webhook) | **POST** /settings/notifications/webhook | Update webhook notification settings
+[**create_notifications_webpush**](SettingsApi.md#create_notifications_webpush) | **POST** /settings/notifications/webpush | Update Web Push notification settings
+[**create_plex**](SettingsApi.md#create_plex) | **POST** /settings/plex | Update Plex settings
+[**create_plex_sync**](SettingsApi.md#create_plex_sync) | **POST** /settings/plex/sync | Start full Plex library scan
+[**create_radarr**](SettingsApi.md#create_radarr) | **POST** /settings/radarr | Create Radarr instance
+[**create_sonarr**](SettingsApi.md#create_sonarr) | **POST** /settings/sonarr | Create Sonarr instance
+[**create_tautulli**](SettingsApi.md#create_tautulli) | **POST** /settings/tautulli | Update Tautulli settings
+[**delete_discover**](SettingsApi.md#delete_discover) | **DELETE** /settings/discover/{sliderId} | Delete slider by ID
+[**delete_radarr**](SettingsApi.md#delete_radarr) | **DELETE** /settings/radarr/{radarrId} | Delete Radarr instance
+[**delete_sonarr**](SettingsApi.md#delete_sonarr) | **DELETE** /settings/sonarr/{sonarrId} | Delete Sonarr instance
+[**get_about**](SettingsApi.md#get_about) | **GET** /settings/about | Get server stats
+[**get_cache**](SettingsApi.md#get_cache) | **GET** /settings/cache | Get a list of active caches
+[**get_discover_reset**](SettingsApi.md#get_discover_reset) | **GET** /settings/discover/reset | Reset all discover sliders
+[**get_jellyfin**](SettingsApi.md#get_jellyfin) | **GET** /settings/jellyfin | Get Jellyfin settings
+[**get_jellyfin_sync**](SettingsApi.md#get_jellyfin_sync) | **GET** /settings/jellyfin/sync | Get status of full Jellyfin library sync
+[**get_main**](SettingsApi.md#get_main) | **GET** /settings/main | Get main settings
+[**get_metadatas**](SettingsApi.md#get_metadatas) | **GET** /settings/metadatas | Get Metadata settings
+[**get_network**](SettingsApi.md#get_network) | **GET** /settings/network | Get network settings
+[**get_notifications_discord**](SettingsApi.md#get_notifications_discord) | **GET** /settings/notifications/discord | Get Discord notification settings
+[**get_notifications_email**](SettingsApi.md#get_notifications_email) | **GET** /settings/notifications/email | Get email notification settings
+[**get_notifications_gotify**](SettingsApi.md#get_notifications_gotify) | **GET** /settings/notifications/gotify | Get Gotify notification settings
+[**get_notifications_ntfy**](SettingsApi.md#get_notifications_ntfy) | **GET** /settings/notifications/ntfy | Get ntfy.sh notification settings
+[**get_notifications_pushbullet**](SettingsApi.md#get_notifications_pushbullet) | **GET** /settings/notifications/pushbullet | Get Pushbullet notification settings
+[**get_notifications_pushover**](SettingsApi.md#get_notifications_pushover) | **GET** /settings/notifications/pushover | Get Pushover notification settings
+[**get_notifications_slack**](SettingsApi.md#get_notifications_slack) | **GET** /settings/notifications/slack | Get Slack notification settings
+[**get_notifications_telegram**](SettingsApi.md#get_notifications_telegram) | **GET** /settings/notifications/telegram | Get Telegram notification settings
+[**get_notifications_webhook**](SettingsApi.md#get_notifications_webhook) | **GET** /settings/notifications/webhook | Get webhook notification settings
+[**get_notifications_webpush**](SettingsApi.md#get_notifications_webpush) | **GET** /settings/notifications/webpush | Get Web Push notification settings
+[**get_plex**](SettingsApi.md#get_plex) | **GET** /settings/plex | Get Plex settings
+[**get_plex_sync**](SettingsApi.md#get_plex_sync) | **GET** /settings/plex/sync | Get status of full Plex library scan
+[**get_public**](SettingsApi.md#get_public) | **GET** /settings/public | Get public settings
+[**get_tautulli**](SettingsApi.md#get_tautulli) | **GET** /settings/tautulli | Get Tautulli settings
+[**list_discover**](SettingsApi.md#list_discover) | **GET** /settings/discover | Get all discover sliders
+[**list_jellyfin_library**](SettingsApi.md#list_jellyfin_library) | **GET** /settings/jellyfin/library | Get Jellyfin libraries
+[**list_jellyfin_users**](SettingsApi.md#list_jellyfin_users) | **GET** /settings/jellyfin/users | Get Jellyfin Users
+[**list_jobs**](SettingsApi.md#list_jobs) | **GET** /settings/jobs | Get scheduled jobs
+[**list_logs**](SettingsApi.md#list_logs) | **GET** /settings/logs | Returns logs
+[**list_notifications_pushover_sounds**](SettingsApi.md#list_notifications_pushover_sounds) | **GET** /settings/notifications/pushover/sounds | Get Pushover sounds
+[**list_plex_devices_servers**](SettingsApi.md#list_plex_devices_servers) | **GET** /settings/plex/devices/servers | Gets the user&#39;s available Plex servers
+[**list_plex_library**](SettingsApi.md#list_plex_library) | **GET** /settings/plex/library | Get Plex libraries
+[**list_plex_users**](SettingsApi.md#list_plex_users) | **GET** /settings/plex/users | Get Plex users
+[**list_radarr**](SettingsApi.md#list_radarr) | **GET** /settings/radarr | Get Radarr settings
+[**list_radarr_profiles**](SettingsApi.md#list_radarr_profiles) | **GET** /settings/radarr/{radarrId}/profiles | Get available Radarr profiles
+[**list_sonarr**](SettingsApi.md#list_sonarr) | **GET** /settings/sonarr | Get Sonarr settings
+[**put_metadatas**](SettingsApi.md#put_metadatas) | **PUT** /settings/metadatas | Update Metadata settings
+[**test_metadatas**](SettingsApi.md#test_metadatas) | **POST** /settings/metadatas/test | Test Provider configuration
+[**test_notifications_discord**](SettingsApi.md#test_notifications_discord) | **POST** /settings/notifications/discord/test | Test Discord settings
+[**test_notifications_email**](SettingsApi.md#test_notifications_email) | **POST** /settings/notifications/email/test | Test email settings
+[**test_notifications_gotify**](SettingsApi.md#test_notifications_gotify) | **POST** /settings/notifications/gotify/test | Test Gotify settings
+[**test_notifications_ntfy**](SettingsApi.md#test_notifications_ntfy) | **POST** /settings/notifications/ntfy/test | Test ntfy.sh settings
+[**test_notifications_pushbullet**](SettingsApi.md#test_notifications_pushbullet) | **POST** /settings/notifications/pushbullet/test | Test Pushbullet settings
+[**test_notifications_pushover**](SettingsApi.md#test_notifications_pushover) | **POST** /settings/notifications/pushover/test | Test Pushover settings
+[**test_notifications_slack**](SettingsApi.md#test_notifications_slack) | **POST** /settings/notifications/slack/test | Test Slack settings
+[**test_notifications_telegram**](SettingsApi.md#test_notifications_telegram) | **POST** /settings/notifications/telegram/test | Test Telegram settings
+[**test_notifications_webhook**](SettingsApi.md#test_notifications_webhook) | **POST** /settings/notifications/webhook/test | Test webhook settings
+[**test_notifications_webpush**](SettingsApi.md#test_notifications_webpush) | **POST** /settings/notifications/webpush/test | Test Web Push settings
+[**test_radarr**](SettingsApi.md#test_radarr) | **POST** /settings/radarr/test | Test Radarr configuration
+[**test_sonarr**](SettingsApi.md#test_sonarr) | **POST** /settings/sonarr/test | Test Sonarr configuration
+[**update_discover**](SettingsApi.md#update_discover) | **PUT** /settings/discover/{sliderId} | Update a single slider
+[**update_radarr**](SettingsApi.md#update_radarr) | **PUT** /settings/radarr/{radarrId} | Update Radarr instance
+[**update_sonarr**](SettingsApi.md#update_sonarr) | **PUT** /settings/sonarr/{sonarrId} | Update Sonarr instance
+
+
+# **create_cache_dns_flush**
+> create_cache_dns_flush(dns_entry)
+
+Flush a specific DNS cache entry
+
+Flushes a specific DNS cache entry
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    dns_entry = 'dns_entry_example' # str | 
+
+    try:
+        # Flush a specific DNS cache entry
+        api_instance.create_cache_dns_flush(dns_entry)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_cache_dns_flush: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dns_entry** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Flushed dns cache |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_cache_flush**
+> create_cache_flush(cache_id)
+
+Flush a specific cache
+
+Flushes all data from the cache ID provided
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    cache_id = 'cache_id_example' # str | 
+
+    try:
+        # Flush a specific cache
+        api_instance.create_cache_flush(cache_id)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_cache_flush: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cache_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Flushed cache |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_discover**
+> List[DiscoverSlider] create_discover(discover_slider)
+
+Batch update all sliders.
+
+Batch update all sliders at once. Should also be used for creation. Will only update sliders provided
+and will not delete any sliders not present in the request. If a slider is missing a required field,
+it will be ignored. Requires the `ADMIN` permission.
+
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.discover_slider import DiscoverSlider
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    discover_slider = [seerr.DiscoverSlider()] # List[DiscoverSlider] | 
+
+    try:
+        # Batch update all sliders.
+        api_response = api_instance.create_discover(discover_slider)
+        print("The response of SettingsApi->create_discover:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_discover: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discover_slider** | [**List[DiscoverSlider]**](DiscoverSlider.md)|  | 
+
+### Return type
+
+[**List[DiscoverSlider]**](DiscoverSlider.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned all newly updated discovery sliders |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_discover_add**
+> DiscoverSlider create_discover_add(update_discover_request)
+
+Add a new slider
+
+Add a single slider and return the newly created slider. Requires the `ADMIN` permission.
+
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.discover_slider import DiscoverSlider
+from seerr.models.update_discover_request import UpdateDiscoverRequest
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    update_discover_request = seerr.UpdateDiscoverRequest() # UpdateDiscoverRequest | 
+
+    try:
+        # Add a new slider
+        api_response = api_instance.create_discover_add(update_discover_request)
+        print("The response of SettingsApi->create_discover_add:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_discover_add: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **update_discover_request** | [**UpdateDiscoverRequest**](UpdateDiscoverRequest.md)|  | 
+
+### Return type
+
+[**DiscoverSlider**](DiscoverSlider.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returns newly added discovery slider |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_initialize**
+> PublicSettings create_initialize()
+
+Initialize application
+
+Sets the app as initialized, allowing the user to navigate to pages other than the setup page.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.public_settings import PublicSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Initialize application
+        api_response = api_instance.create_initialize()
+        print("The response of SettingsApi->create_initialize:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_initialize: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**PublicSettings**](PublicSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Public settings returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_jellyfin**
+> JellyfinSettings create_jellyfin(jellyfin_settings)
+
+Update Jellyfin settings
+
+Updates Jellyfin settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.jellyfin_settings import JellyfinSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    jellyfin_settings = seerr.JellyfinSettings() # JellyfinSettings | 
+
+    try:
+        # Update Jellyfin settings
+        api_response = api_instance.create_jellyfin(jellyfin_settings)
+        print("The response of SettingsApi->create_jellyfin:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_jellyfin: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jellyfin_settings** | [**JellyfinSettings**](JellyfinSettings.md)|  | 
+
+### Return type
+
+[**JellyfinSettings**](JellyfinSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were successfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_jellyfin_sync**
+> GetJellyfinSync2XXResponse create_jellyfin_sync(create_jellyfin_sync_request=create_jellyfin_sync_request)
+
+Start full Jellyfin library sync
+
+Runs a full Jellyfin library sync and returns the progress in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.create_jellyfin_sync_request import CreateJellyfinSyncRequest
+from seerr.models.get_jellyfin_sync2_xx_response import GetJellyfinSync2XXResponse
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    create_jellyfin_sync_request = seerr.CreateJellyfinSyncRequest() # CreateJellyfinSyncRequest |  (optional)
+
+    try:
+        # Start full Jellyfin library sync
+        api_response = api_instance.create_jellyfin_sync(create_jellyfin_sync_request=create_jellyfin_sync_request)
+        print("The response of SettingsApi->create_jellyfin_sync:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_jellyfin_sync: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_jellyfin_sync_request** | [**CreateJellyfinSyncRequest**](CreateJellyfinSyncRequest.md)|  | [optional] 
+
+### Return type
+
+[**GetJellyfinSync2XXResponse**](GetJellyfinSync2XXResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Status of Jellyfin sync |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_jobs_cancel**
+> Job create_jobs_cancel(job_id)
+
+Cancel a specific job
+
+Cancels a specific job. Will return the new job status in JSON format.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.job import Job
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        # Cancel a specific job
+        api_response = api_instance.create_jobs_cancel(job_id)
+        print("The response of SettingsApi->create_jobs_cancel:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_jobs_cancel: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Canceled job returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_jobs_run**
+> Job create_jobs_run(job_id)
+
+Invoke a specific job
+
+Invokes a specific job to run. Will return the new job status in JSON format.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.job import Job
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    job_id = 'job_id_example' # str | 
+
+    try:
+        # Invoke a specific job
+        api_response = api_instance.create_jobs_run(job_id)
+        print("The response of SettingsApi->create_jobs_run:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_jobs_run: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Invoked job returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_jobs_schedule**
+> Job create_jobs_schedule(job_id, create_jobs_schedule_request)
+
+Modify job schedule
+
+Re-registers the job with the schedule specified. Will return the job in JSON format.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.create_jobs_schedule_request import CreateJobsScheduleRequest
+from seerr.models.job import Job
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    job_id = 'job_id_example' # str | 
+    create_jobs_schedule_request = seerr.CreateJobsScheduleRequest() # CreateJobsScheduleRequest | 
+
+    try:
+        # Modify job schedule
+        api_response = api_instance.create_jobs_schedule(job_id, create_jobs_schedule_request)
+        print("The response of SettingsApi->create_jobs_schedule:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_jobs_schedule: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_id** | **str**|  | 
+ **create_jobs_schedule_request** | [**CreateJobsScheduleRequest**](CreateJobsScheduleRequest.md)|  | 
+
+### Return type
+
+[**Job**](Job.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Rescheduled job |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_main**
+> MainSettings create_main(main_settings)
+
+Update main settings
+
+Updates main settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.main_settings import MainSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    main_settings = seerr.MainSettings() # MainSettings | 
+
+    try:
+        # Update main settings
+        api_response = api_instance.create_main(main_settings)
+        print("The response of SettingsApi->create_main:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_main: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **main_settings** | [**MainSettings**](MainSettings.md)|  | 
+
+### Return type
+
+[**MainSettings**](MainSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_main_regenerate**
+> MainSettings create_main_regenerate()
+
+Get main settings with newly-generated API key
+
+Returns main settings in a JSON object, using the new API key.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.main_settings import MainSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get main settings with newly-generated API key
+        api_response = api_instance.create_main_regenerate()
+        print("The response of SettingsApi->create_main_regenerate:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_main_regenerate: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**MainSettings**](MainSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_network**
+> NetworkSettings create_network(network_settings)
+
+Update network settings
+
+Updates network settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.network_settings import NetworkSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    network_settings = seerr.NetworkSettings() # NetworkSettings | 
+
+    try:
+        # Update network settings
+        api_response = api_instance.create_network(network_settings)
+        print("The response of SettingsApi->create_network:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_network: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **network_settings** | [**NetworkSettings**](NetworkSettings.md)|  | 
+
+### Return type
+
+[**NetworkSettings**](NetworkSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_notifications_discord**
+> DiscordSettings create_notifications_discord(discord_settings)
+
+Update Discord notification settings
+
+Updates Discord notification settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.discord_settings import DiscordSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    discord_settings = seerr.DiscordSettings() # DiscordSettings | 
+
+    try:
+        # Update Discord notification settings
+        api_response = api_instance.create_notifications_discord(discord_settings)
+        print("The response of SettingsApi->create_notifications_discord:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_notifications_discord: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discord_settings** | [**DiscordSettings**](DiscordSettings.md)|  | 
+
+### Return type
+
+[**DiscordSettings**](DiscordSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_notifications_email**
+> NotificationEmailSettings create_notifications_email(notification_email_settings)
+
+Update email notification settings
+
+Updates email notification settings with provided values
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.notification_email_settings import NotificationEmailSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    notification_email_settings = seerr.NotificationEmailSettings() # NotificationEmailSettings | 
+
+    try:
+        # Update email notification settings
+        api_response = api_instance.create_notifications_email(notification_email_settings)
+        print("The response of SettingsApi->create_notifications_email:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_notifications_email: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **notification_email_settings** | [**NotificationEmailSettings**](NotificationEmailSettings.md)|  | 
+
+### Return type
+
+[**NotificationEmailSettings**](NotificationEmailSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_notifications_gotify**
+> GotifySettings create_notifications_gotify(gotify_settings)
+
+Update Gotify notification settings
+
+Update Gotify notification settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.gotify_settings import GotifySettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    gotify_settings = seerr.GotifySettings() # GotifySettings | 
+
+    try:
+        # Update Gotify notification settings
+        api_response = api_instance.create_notifications_gotify(gotify_settings)
+        print("The response of SettingsApi->create_notifications_gotify:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_notifications_gotify: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gotify_settings** | [**GotifySettings**](GotifySettings.md)|  | 
+
+### Return type
+
+[**GotifySettings**](GotifySettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_notifications_ntfy**
+> NtfySettings create_notifications_ntfy(ntfy_settings)
+
+Update ntfy.sh notification settings
+
+Update ntfy.sh notification settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.ntfy_settings import NtfySettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    ntfy_settings = seerr.NtfySettings() # NtfySettings | 
+
+    try:
+        # Update ntfy.sh notification settings
+        api_response = api_instance.create_notifications_ntfy(ntfy_settings)
+        print("The response of SettingsApi->create_notifications_ntfy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_notifications_ntfy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ntfy_settings** | [**NtfySettings**](NtfySettings.md)|  | 
+
+### Return type
+
+[**NtfySettings**](NtfySettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_notifications_pushbullet**
+> PushbulletSettings create_notifications_pushbullet(pushbullet_settings)
+
+Update Pushbullet notification settings
+
+Update Pushbullet notification settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.pushbullet_settings import PushbulletSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    pushbullet_settings = seerr.PushbulletSettings() # PushbulletSettings | 
+
+    try:
+        # Update Pushbullet notification settings
+        api_response = api_instance.create_notifications_pushbullet(pushbullet_settings)
+        print("The response of SettingsApi->create_notifications_pushbullet:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_notifications_pushbullet: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pushbullet_settings** | [**PushbulletSettings**](PushbulletSettings.md)|  | 
+
+### Return type
+
+[**PushbulletSettings**](PushbulletSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_notifications_pushover**
+> PushoverSettings create_notifications_pushover(pushover_settings)
+
+Update Pushover notification settings
+
+Update Pushover notification settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.pushover_settings import PushoverSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    pushover_settings = seerr.PushoverSettings() # PushoverSettings | 
+
+    try:
+        # Update Pushover notification settings
+        api_response = api_instance.create_notifications_pushover(pushover_settings)
+        print("The response of SettingsApi->create_notifications_pushover:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_notifications_pushover: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pushover_settings** | [**PushoverSettings**](PushoverSettings.md)|  | 
+
+### Return type
+
+[**PushoverSettings**](PushoverSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_notifications_slack**
+> SlackSettings create_notifications_slack(slack_settings)
+
+Update Slack notification settings
+
+Updates Slack notification settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.slack_settings import SlackSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    slack_settings = seerr.SlackSettings() # SlackSettings | 
+
+    try:
+        # Update Slack notification settings
+        api_response = api_instance.create_notifications_slack(slack_settings)
+        print("The response of SettingsApi->create_notifications_slack:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_notifications_slack: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slack_settings** | [**SlackSettings**](SlackSettings.md)|  | 
+
+### Return type
+
+[**SlackSettings**](SlackSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_notifications_telegram**
+> TelegramSettings create_notifications_telegram(telegram_settings)
+
+Update Telegram notification settings
+
+Update Telegram notification settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.telegram_settings import TelegramSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    telegram_settings = seerr.TelegramSettings() # TelegramSettings | 
+
+    try:
+        # Update Telegram notification settings
+        api_response = api_instance.create_notifications_telegram(telegram_settings)
+        print("The response of SettingsApi->create_notifications_telegram:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_notifications_telegram: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **telegram_settings** | [**TelegramSettings**](TelegramSettings.md)|  | 
+
+### Return type
+
+[**TelegramSettings**](TelegramSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_notifications_webhook**
+> WebhookSettings create_notifications_webhook(webhook_settings)
+
+Update webhook notification settings
+
+Updates webhook notification settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.webhook_settings import WebhookSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    webhook_settings = seerr.WebhookSettings() # WebhookSettings | 
+
+    try:
+        # Update webhook notification settings
+        api_response = api_instance.create_notifications_webhook(webhook_settings)
+        print("The response of SettingsApi->create_notifications_webhook:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_notifications_webhook: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhook_settings** | [**WebhookSettings**](WebhookSettings.md)|  | 
+
+### Return type
+
+[**WebhookSettings**](WebhookSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_notifications_webpush**
+> WebPushSettings create_notifications_webpush(web_push_settings)
+
+Update Web Push notification settings
+
+Updates Web Push notification settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.web_push_settings import WebPushSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    web_push_settings = seerr.WebPushSettings() # WebPushSettings | 
+
+    try:
+        # Update Web Push notification settings
+        api_response = api_instance.create_notifications_webpush(web_push_settings)
+        print("The response of SettingsApi->create_notifications_webpush:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_notifications_webpush: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **web_push_settings** | [**WebPushSettings**](WebPushSettings.md)|  | 
+
+### Return type
+
+[**WebPushSettings**](WebPushSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were sucessfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_plex**
+> PlexSettings create_plex(plex_settings)
+
+Update Plex settings
+
+Updates Plex settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.plex_settings import PlexSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    plex_settings = seerr.PlexSettings() # PlexSettings | 
+
+    try:
+        # Update Plex settings
+        api_response = api_instance.create_plex(plex_settings)
+        print("The response of SettingsApi->create_plex:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_plex: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **plex_settings** | [**PlexSettings**](PlexSettings.md)|  | 
+
+### Return type
+
+[**PlexSettings**](PlexSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were successfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_plex_sync**
+> GetPlexSync2XXResponse create_plex_sync(create_jellyfin_sync_request=create_jellyfin_sync_request)
+
+Start full Plex library scan
+
+Runs a full Plex library scan and returns the progress in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.create_jellyfin_sync_request import CreateJellyfinSyncRequest
+from seerr.models.get_plex_sync2_xx_response import GetPlexSync2XXResponse
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    create_jellyfin_sync_request = seerr.CreateJellyfinSyncRequest() # CreateJellyfinSyncRequest |  (optional)
+
+    try:
+        # Start full Plex library scan
+        api_response = api_instance.create_plex_sync(create_jellyfin_sync_request=create_jellyfin_sync_request)
+        print("The response of SettingsApi->create_plex_sync:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_plex_sync: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_jellyfin_sync_request** | [**CreateJellyfinSyncRequest**](CreateJellyfinSyncRequest.md)|  | [optional] 
+
+### Return type
+
+[**GetPlexSync2XXResponse**](GetPlexSync2XXResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Status of Plex scan |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_radarr**
+> RadarrSettings create_radarr(radarr_settings)
+
+Create Radarr instance
+
+Creates a new Radarr instance from the request body.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.radarr_settings import RadarrSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    radarr_settings = seerr.RadarrSettings() # RadarrSettings | 
+
+    try:
+        # Create Radarr instance
+        api_response = api_instance.create_radarr(radarr_settings)
+        print("The response of SettingsApi->create_radarr:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_radarr: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **radarr_settings** | [**RadarrSettings**](RadarrSettings.md)|  | 
+
+### Return type
+
+[**RadarrSettings**](RadarrSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | New Radarr instance created |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_sonarr**
+> SonarrSettings create_sonarr(sonarr_settings)
+
+Create Sonarr instance
+
+Creates a new Sonarr instance from the request body.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.sonarr_settings import SonarrSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    sonarr_settings = seerr.SonarrSettings() # SonarrSettings | 
+
+    try:
+        # Create Sonarr instance
+        api_response = api_instance.create_sonarr(sonarr_settings)
+        print("The response of SettingsApi->create_sonarr:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_sonarr: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sonarr_settings** | [**SonarrSettings**](SonarrSettings.md)|  | 
+
+### Return type
+
+[**SonarrSettings**](SonarrSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | New Sonarr instance created |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_tautulli**
+> TautulliSettings create_tautulli(tautulli_settings)
+
+Update Tautulli settings
+
+Updates Tautulli settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.tautulli_settings import TautulliSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    tautulli_settings = seerr.TautulliSettings() # TautulliSettings | 
+
+    try:
+        # Update Tautulli settings
+        api_response = api_instance.create_tautulli(tautulli_settings)
+        print("The response of SettingsApi->create_tautulli:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_tautulli: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tautulli_settings** | [**TautulliSettings**](TautulliSettings.md)|  | 
+
+### Return type
+
+[**TautulliSettings**](TautulliSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were successfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_discover**
+> DiscoverSlider delete_discover(slider_id)
+
+Delete slider by ID
+
+Deletes the slider with the provided sliderId. Requires the `ADMIN` permission.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.discover_slider import DiscoverSlider
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    slider_id = 3.4 # float | 
+
+    try:
+        # Delete slider by ID
+        api_response = api_instance.delete_discover(slider_id)
+        print("The response of SettingsApi->delete_discover:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->delete_discover: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slider_id** | **float**|  | 
+
+### Return type
+
+[**DiscoverSlider**](DiscoverSlider.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Slider successfully deleted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_radarr**
+> RadarrSettings delete_radarr(radarr_id)
+
+Delete Radarr instance
+
+Deletes an existing Radarr instance based on the radarrId parameter.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.radarr_settings import RadarrSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    radarr_id = 56 # int | Radarr instance ID
+
+    try:
+        # Delete Radarr instance
+        api_response = api_instance.delete_radarr(radarr_id)
+        print("The response of SettingsApi->delete_radarr:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->delete_radarr: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **radarr_id** | **int**| Radarr instance ID | 
+
+### Return type
+
+[**RadarrSettings**](RadarrSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Radarr instance updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_sonarr**
+> SonarrSettings delete_sonarr(sonarr_id)
+
+Delete Sonarr instance
+
+Deletes an existing Sonarr instance based on the sonarrId parameter.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.sonarr_settings import SonarrSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    sonarr_id = 56 # int | Sonarr instance ID
+
+    try:
+        # Delete Sonarr instance
+        api_response = api_instance.delete_sonarr(sonarr_id)
+        print("The response of SettingsApi->delete_sonarr:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->delete_sonarr: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sonarr_id** | **int**| Sonarr instance ID | 
+
+### Return type
+
+[**SonarrSettings**](SonarrSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Sonarr instance updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_about**
+> GetAbout2XXResponse get_about()
+
+Get server stats
+
+Returns current server stats in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.get_about2_xx_response import GetAbout2XXResponse
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get server stats
+        api_response = api_instance.get_about()
+        print("The response of SettingsApi->get_about:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_about: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetAbout2XXResponse**](GetAbout2XXResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned about settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_cache**
+> GetCache2XXResponse get_cache()
+
+Get a list of active caches
+
+Retrieves a list of all active caches and their current stats.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.get_cache2_xx_response import GetCache2XXResponse
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get a list of active caches
+        api_response = api_instance.get_cache()
+        print("The response of SettingsApi->get_cache:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_cache: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetCache2XXResponse**](GetCache2XXResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Caches returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_discover_reset**
+> get_discover_reset()
+
+Reset all discover sliders
+
+Resets all discovery sliders to the default values. Requires the `ADMIN` permission.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Reset all discover sliders
+        api_instance.get_discover_reset()
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_discover_reset: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | All sliders reset to defaults |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_jellyfin**
+> JellyfinSettings get_jellyfin()
+
+Get Jellyfin settings
+
+Retrieves current Jellyfin settings.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.jellyfin_settings import JellyfinSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Jellyfin settings
+        api_response = api_instance.get_jellyfin()
+        print("The response of SettingsApi->get_jellyfin:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_jellyfin: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**JellyfinSettings**](JellyfinSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_jellyfin_sync**
+> GetJellyfinSync2XXResponse get_jellyfin_sync()
+
+Get status of full Jellyfin library sync
+
+Returns sync progress in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.get_jellyfin_sync2_xx_response import GetJellyfinSync2XXResponse
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get status of full Jellyfin library sync
+        api_response = api_instance.get_jellyfin_sync()
+        print("The response of SettingsApi->get_jellyfin_sync:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_jellyfin_sync: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetJellyfinSync2XXResponse**](GetJellyfinSync2XXResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Status of Jellyfin sync |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_main**
+> MainSettings get_main()
+
+Get main settings
+
+Retrieves all main settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.main_settings import MainSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get main settings
+        api_response = api_instance.get_main()
+        print("The response of SettingsApi->get_main:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_main: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**MainSettings**](MainSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_metadatas**
+> MetadataSettings get_metadatas()
+
+Get Metadata settings
+
+Retrieves current Metadata settings.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.metadata_settings import MetadataSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Metadata settings
+        api_response = api_instance.get_metadatas()
+        print("The response of SettingsApi->get_metadatas:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_metadatas: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**MetadataSettings**](MetadataSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_network**
+> MainSettings get_network()
+
+Get network settings
+
+Retrieves all network settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.main_settings import MainSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get network settings
+        api_response = api_instance.get_network()
+        print("The response of SettingsApi->get_network:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_network: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**MainSettings**](MainSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_notifications_discord**
+> DiscordSettings get_notifications_discord()
+
+Get Discord notification settings
+
+Returns current Discord notification settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.discord_settings import DiscordSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Discord notification settings
+        api_response = api_instance.get_notifications_discord()
+        print("The response of SettingsApi->get_notifications_discord:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_notifications_discord: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**DiscordSettings**](DiscordSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned Discord settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_notifications_email**
+> NotificationEmailSettings get_notifications_email()
+
+Get email notification settings
+
+Returns current email notification settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.notification_email_settings import NotificationEmailSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get email notification settings
+        api_response = api_instance.get_notifications_email()
+        print("The response of SettingsApi->get_notifications_email:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_notifications_email: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**NotificationEmailSettings**](NotificationEmailSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned email settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_notifications_gotify**
+> GotifySettings get_notifications_gotify()
+
+Get Gotify notification settings
+
+Returns current Gotify notification settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.gotify_settings import GotifySettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Gotify notification settings
+        api_response = api_instance.get_notifications_gotify()
+        print("The response of SettingsApi->get_notifications_gotify:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_notifications_gotify: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GotifySettings**](GotifySettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned Gotify settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_notifications_ntfy**
+> NtfySettings get_notifications_ntfy()
+
+Get ntfy.sh notification settings
+
+Returns current ntfy.sh notification settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.ntfy_settings import NtfySettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get ntfy.sh notification settings
+        api_response = api_instance.get_notifications_ntfy()
+        print("The response of SettingsApi->get_notifications_ntfy:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_notifications_ntfy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**NtfySettings**](NtfySettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned ntfy.sh settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_notifications_pushbullet**
+> PushbulletSettings get_notifications_pushbullet()
+
+Get Pushbullet notification settings
+
+Returns current Pushbullet notification settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.pushbullet_settings import PushbulletSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Pushbullet notification settings
+        api_response = api_instance.get_notifications_pushbullet()
+        print("The response of SettingsApi->get_notifications_pushbullet:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_notifications_pushbullet: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**PushbulletSettings**](PushbulletSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned Pushbullet settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_notifications_pushover**
+> PushoverSettings get_notifications_pushover()
+
+Get Pushover notification settings
+
+Returns current Pushover notification settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.pushover_settings import PushoverSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Pushover notification settings
+        api_response = api_instance.get_notifications_pushover()
+        print("The response of SettingsApi->get_notifications_pushover:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_notifications_pushover: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**PushoverSettings**](PushoverSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned Pushover settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_notifications_slack**
+> SlackSettings get_notifications_slack()
+
+Get Slack notification settings
+
+Returns current Slack notification settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.slack_settings import SlackSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Slack notification settings
+        api_response = api_instance.get_notifications_slack()
+        print("The response of SettingsApi->get_notifications_slack:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_notifications_slack: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SlackSettings**](SlackSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned slack settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_notifications_telegram**
+> TelegramSettings get_notifications_telegram()
+
+Get Telegram notification settings
+
+Returns current Telegram notification settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.telegram_settings import TelegramSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Telegram notification settings
+        api_response = api_instance.get_notifications_telegram()
+        print("The response of SettingsApi->get_notifications_telegram:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_notifications_telegram: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TelegramSettings**](TelegramSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned Telegram settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_notifications_webhook**
+> WebhookSettings get_notifications_webhook()
+
+Get webhook notification settings
+
+Returns current webhook notification settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.webhook_settings import WebhookSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get webhook notification settings
+        api_response = api_instance.get_notifications_webhook()
+        print("The response of SettingsApi->get_notifications_webhook:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_notifications_webhook: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**WebhookSettings**](WebhookSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned webhook settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_notifications_webpush**
+> WebPushSettings get_notifications_webpush()
+
+Get Web Push notification settings
+
+Returns current Web Push notification settings in a JSON object.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.web_push_settings import WebPushSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Web Push notification settings
+        api_response = api_instance.get_notifications_webpush()
+        print("The response of SettingsApi->get_notifications_webpush:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_notifications_webpush: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**WebPushSettings**](WebPushSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned web push settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_plex**
+> PlexSettings get_plex()
+
+Get Plex settings
+
+Retrieves current Plex settings.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.plex_settings import PlexSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Plex settings
+        api_response = api_instance.get_plex()
+        print("The response of SettingsApi->get_plex:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_plex: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**PlexSettings**](PlexSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_plex_sync**
+> GetPlexSync2XXResponse get_plex_sync()
+
+Get status of full Plex library scan
+
+Returns scan progress in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.get_plex_sync2_xx_response import GetPlexSync2XXResponse
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get status of full Plex library scan
+        api_response = api_instance.get_plex_sync()
+        print("The response of SettingsApi->get_plex_sync:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_plex_sync: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetPlexSync2XXResponse**](GetPlexSync2XXResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Status of Plex scan |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_public**
+> PublicSettings get_public()
+
+Get public settings
+
+Returns settings that are not protected or sensitive. Mainly used to determine if the application has been configured for the first time.
+
+### Example
+
+
+```python
+import seerr
+from seerr.models.public_settings import PublicSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get public settings
+        api_response = api_instance.get_public()
+        print("The response of SettingsApi->get_public:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_public: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**PublicSettings**](PublicSettings.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Public settings returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_tautulli**
+> TautulliSettings get_tautulli()
+
+Get Tautulli settings
+
+Retrieves current Tautulli settings.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.tautulli_settings import TautulliSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Tautulli settings
+        api_response = api_instance.get_tautulli()
+        print("The response of SettingsApi->get_tautulli:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->get_tautulli: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TautulliSettings**](TautulliSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_discover**
+> List[DiscoverSlider] list_discover()
+
+Get all discover sliders
+
+Returns all discovery sliders. Built-in and custom made.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.discover_slider import DiscoverSlider
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get all discover sliders
+        api_response = api_instance.list_discover()
+        print("The response of SettingsApi->list_discover:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_discover: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[DiscoverSlider]**](DiscoverSlider.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned all discovery sliders |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_jellyfin_library**
+> List[JellyfinLibrary] list_jellyfin_library(sync=sync, enable=enable)
+
+Get Jellyfin libraries
+
+Returns a list of Jellyfin libraries in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.jellyfin_library import JellyfinLibrary
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    sync = 'sync_example' # str | Syncs the current libraries with the current Jellyfin server (optional)
+    enable = 'enable_example' # str | Comma separated list of libraries to enable. Any libraries not passed will be disabled! (optional)
+
+    try:
+        # Get Jellyfin libraries
+        api_response = api_instance.list_jellyfin_library(sync=sync, enable=enable)
+        print("The response of SettingsApi->list_jellyfin_library:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_jellyfin_library: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sync** | **str**| Syncs the current libraries with the current Jellyfin server | [optional] 
+ **enable** | **str**| Comma separated list of libraries to enable. Any libraries not passed will be disabled! | [optional] 
+
+### Return type
+
+[**List[JellyfinLibrary]**](JellyfinLibrary.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Jellyfin libraries returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_jellyfin_users**
+> List[ListJellyfinUsers2XXResponseInner] list_jellyfin_users()
+
+Get Jellyfin Users
+
+Returns a list of Jellyfin Users in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.list_jellyfin_users2_xx_response_inner import ListJellyfinUsers2XXResponseInner
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Jellyfin Users
+        api_response = api_instance.list_jellyfin_users()
+        print("The response of SettingsApi->list_jellyfin_users:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_jellyfin_users: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[ListJellyfinUsers2XXResponseInner]**](ListJellyfinUsers2XXResponseInner.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Jellyfin users returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_jobs**
+> List[Job] list_jobs()
+
+Get scheduled jobs
+
+Returns list of all scheduled jobs and details about their next execution time in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.job import Job
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get scheduled jobs
+        api_response = api_instance.list_jobs()
+        print("The response of SettingsApi->list_jobs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_jobs: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[Job]**](Job.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Scheduled jobs returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_logs**
+> List[ListLogs2XXResponseInner] list_logs(take=take, skip=skip, filter=filter, search=search)
+
+Returns logs
+
+Returns list of all log items and details
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.list_logs2_xx_response_inner import ListLogs2XXResponseInner
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    take = 25 # float |  (optional)
+    skip = 0 # float |  (optional)
+    filter = debug # str |  (optional) (default to debug)
+    search = 'plex' # str |  (optional)
+
+    try:
+        # Returns logs
+        api_response = api_instance.list_logs(take=take, skip=skip, filter=filter, search=search)
+        print("The response of SettingsApi->list_logs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_logs: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **take** | **float**|  | [optional] 
+ **skip** | **float**|  | [optional] 
+ **filter** | **str**|  | [optional] [default to debug]
+ **search** | **str**|  | [optional] 
+
+### Return type
+
+[**List[ListLogs2XXResponseInner]**](ListLogs2XXResponseInner.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Server log returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_notifications_pushover_sounds**
+> List[ListNotificationsPushoverSounds2XXResponseInner] list_notifications_pushover_sounds(token)
+
+Get Pushover sounds
+
+Returns valid Pushover sound options in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.list_notifications_pushover_sounds2_xx_response_inner import ListNotificationsPushoverSounds2XXResponseInner
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    token = 'token_example' # str | 
+
+    try:
+        # Get Pushover sounds
+        api_response = api_instance.list_notifications_pushover_sounds(token)
+        print("The response of SettingsApi->list_notifications_pushover_sounds:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_notifications_pushover_sounds: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token** | **str**|  | 
+
+### Return type
+
+[**List[ListNotificationsPushoverSounds2XXResponseInner]**](ListNotificationsPushoverSounds2XXResponseInner.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned Pushover settings |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_plex_devices_servers**
+> List[PlexDevice] list_plex_devices_servers()
+
+Gets the user's available Plex servers
+
+Returns a list of available Plex servers and their connectivity state
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.plex_device import PlexDevice
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Gets the user's available Plex servers
+        api_response = api_instance.list_plex_devices_servers()
+        print("The response of SettingsApi->list_plex_devices_servers:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_plex_devices_servers: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[PlexDevice]**](PlexDevice.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_plex_library**
+> List[PlexLibrary] list_plex_library(sync=sync, enable=enable)
+
+Get Plex libraries
+
+Returns a list of Plex libraries in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.plex_library import PlexLibrary
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    sync = 'sync_example' # str | Syncs the current libraries with the current Plex server (optional)
+    enable = 'enable_example' # str | Comma separated list of libraries to enable. Any libraries not passed will be disabled! (optional)
+
+    try:
+        # Get Plex libraries
+        api_response = api_instance.list_plex_library(sync=sync, enable=enable)
+        print("The response of SettingsApi->list_plex_library:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_plex_library: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sync** | **str**| Syncs the current libraries with the current Plex server | [optional] 
+ **enable** | **str**| Comma separated list of libraries to enable. Any libraries not passed will be disabled! | [optional] 
+
+### Return type
+
+[**List[PlexLibrary]**](PlexLibrary.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Plex libraries returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_plex_users**
+> List[ListPlexUsers2XXResponseInner] list_plex_users()
+
+Get Plex users
+
+Returns a list of Plex users in a JSON array.
+
+Requires the `MANAGE_USERS` permission.
+
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.list_plex_users2_xx_response_inner import ListPlexUsers2XXResponseInner
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Plex users
+        api_response = api_instance.list_plex_users()
+        print("The response of SettingsApi->list_plex_users:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_plex_users: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[ListPlexUsers2XXResponseInner]**](ListPlexUsers2XXResponseInner.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Plex users |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_radarr**
+> List[RadarrSettings] list_radarr()
+
+Get Radarr settings
+
+Returns all Radarr settings in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.radarr_settings import RadarrSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Radarr settings
+        api_response = api_instance.list_radarr()
+        print("The response of SettingsApi->list_radarr:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_radarr: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[RadarrSettings]**](RadarrSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_radarr_profiles**
+> List[ServiceProfile] list_radarr_profiles(radarr_id)
+
+Get available Radarr profiles
+
+Returns a list of profiles available on the Radarr server instance in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.service_profile import ServiceProfile
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    radarr_id = 56 # int | Radarr instance ID
+
+    try:
+        # Get available Radarr profiles
+        api_response = api_instance.list_radarr_profiles(radarr_id)
+        print("The response of SettingsApi->list_radarr_profiles:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_radarr_profiles: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **radarr_id** | **int**| Radarr instance ID | 
+
+### Return type
+
+[**List[ServiceProfile]**](ServiceProfile.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returned list of profiles |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_sonarr**
+> List[SonarrSettings] list_sonarr()
+
+Get Sonarr settings
+
+Returns all Sonarr settings in a JSON array.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.sonarr_settings import SonarrSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Get Sonarr settings
+        api_response = api_instance.list_sonarr()
+        print("The response of SettingsApi->list_sonarr:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->list_sonarr: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[SonarrSettings]**](SonarrSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **put_metadatas**
+> MetadataSettings put_metadatas(metadata_settings)
+
+Update Metadata settings
+
+Updates Metadata settings with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.metadata_settings import MetadataSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    metadata_settings = seerr.MetadataSettings() # MetadataSettings | 
+
+    try:
+        # Update Metadata settings
+        api_response = api_instance.put_metadatas(metadata_settings)
+        print("The response of SettingsApi->put_metadatas:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->put_metadatas: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **metadata_settings** | [**MetadataSettings**](MetadataSettings.md)|  | 
+
+### Return type
+
+[**MetadataSettings**](MetadataSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Values were successfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_metadatas**
+> TestMetadatas2XXResponse test_metadatas(test_metadatas_request)
+
+Test Provider configuration
+
+Tests if the TVDB configuration is valid. Returns a list of available languages on success.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.test_metadatas2_xx_response import TestMetadatas2XXResponse
+from seerr.models.test_metadatas_request import TestMetadatasRequest
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    test_metadatas_request = seerr.TestMetadatasRequest() # TestMetadatasRequest | 
+
+    try:
+        # Test Provider configuration
+        api_response = api_instance.test_metadatas(test_metadatas_request)
+        print("The response of SettingsApi->test_metadatas:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_metadatas: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **test_metadatas_request** | [**TestMetadatasRequest**](TestMetadatasRequest.md)|  | 
+
+### Return type
+
+[**TestMetadatas2XXResponse**](TestMetadatas2XXResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Succesfully connected to TVDB |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_notifications_discord**
+> test_notifications_discord(discord_settings)
+
+Test Discord settings
+
+Sends a test notification to the Discord agent.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.discord_settings import DiscordSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    discord_settings = seerr.DiscordSettings() # DiscordSettings | 
+
+    try:
+        # Test Discord settings
+        api_instance.test_notifications_discord(discord_settings)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_notifications_discord: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **discord_settings** | [**DiscordSettings**](DiscordSettings.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Test notification attempted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_notifications_email**
+> test_notifications_email(notification_email_settings)
+
+Test email settings
+
+Sends a test notification to the email agent.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.notification_email_settings import NotificationEmailSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    notification_email_settings = seerr.NotificationEmailSettings() # NotificationEmailSettings | 
+
+    try:
+        # Test email settings
+        api_instance.test_notifications_email(notification_email_settings)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_notifications_email: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **notification_email_settings** | [**NotificationEmailSettings**](NotificationEmailSettings.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Test notification attempted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_notifications_gotify**
+> test_notifications_gotify(gotify_settings)
+
+Test Gotify settings
+
+Sends a test notification to the Gotify agent.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.gotify_settings import GotifySettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    gotify_settings = seerr.GotifySettings() # GotifySettings | 
+
+    try:
+        # Test Gotify settings
+        api_instance.test_notifications_gotify(gotify_settings)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_notifications_gotify: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **gotify_settings** | [**GotifySettings**](GotifySettings.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Test notification attempted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_notifications_ntfy**
+> test_notifications_ntfy(ntfy_settings)
+
+Test ntfy.sh settings
+
+Sends a test notification to the ntfy.sh agent.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.ntfy_settings import NtfySettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    ntfy_settings = seerr.NtfySettings() # NtfySettings | 
+
+    try:
+        # Test ntfy.sh settings
+        api_instance.test_notifications_ntfy(ntfy_settings)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_notifications_ntfy: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ntfy_settings** | [**NtfySettings**](NtfySettings.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Test notification attempted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_notifications_pushbullet**
+> test_notifications_pushbullet(pushbullet_settings)
+
+Test Pushbullet settings
+
+Sends a test notification to the Pushbullet agent.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.pushbullet_settings import PushbulletSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    pushbullet_settings = seerr.PushbulletSettings() # PushbulletSettings | 
+
+    try:
+        # Test Pushbullet settings
+        api_instance.test_notifications_pushbullet(pushbullet_settings)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_notifications_pushbullet: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pushbullet_settings** | [**PushbulletSettings**](PushbulletSettings.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Test notification attempted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_notifications_pushover**
+> test_notifications_pushover(pushover_settings)
+
+Test Pushover settings
+
+Sends a test notification to the Pushover agent.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.pushover_settings import PushoverSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    pushover_settings = seerr.PushoverSettings() # PushoverSettings | 
+
+    try:
+        # Test Pushover settings
+        api_instance.test_notifications_pushover(pushover_settings)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_notifications_pushover: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pushover_settings** | [**PushoverSettings**](PushoverSettings.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Test notification attempted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_notifications_slack**
+> test_notifications_slack(slack_settings)
+
+Test Slack settings
+
+Sends a test notification to the Slack agent.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.slack_settings import SlackSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    slack_settings = seerr.SlackSettings() # SlackSettings | 
+
+    try:
+        # Test Slack settings
+        api_instance.test_notifications_slack(slack_settings)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_notifications_slack: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slack_settings** | [**SlackSettings**](SlackSettings.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Test notification attempted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_notifications_telegram**
+> test_notifications_telegram(telegram_settings)
+
+Test Telegram settings
+
+Sends a test notification to the Telegram agent.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.telegram_settings import TelegramSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    telegram_settings = seerr.TelegramSettings() # TelegramSettings | 
+
+    try:
+        # Test Telegram settings
+        api_instance.test_notifications_telegram(telegram_settings)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_notifications_telegram: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **telegram_settings** | [**TelegramSettings**](TelegramSettings.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Test notification attempted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_notifications_webhook**
+> test_notifications_webhook(webhook_settings)
+
+Test webhook settings
+
+Sends a test notification to the webhook agent.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.webhook_settings import WebhookSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    webhook_settings = seerr.WebhookSettings() # WebhookSettings | 
+
+    try:
+        # Test webhook settings
+        api_instance.test_notifications_webhook(webhook_settings)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_notifications_webhook: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhook_settings** | [**WebhookSettings**](WebhookSettings.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Test notification attempted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_notifications_webpush**
+> test_notifications_webpush(web_push_settings)
+
+Test Web Push settings
+
+Sends a test notification to the Web Push agent.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.web_push_settings import WebPushSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    web_push_settings = seerr.WebPushSettings() # WebPushSettings | 
+
+    try:
+        # Test Web Push settings
+        api_instance.test_notifications_webpush(web_push_settings)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_notifications_webpush: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **web_push_settings** | [**WebPushSettings**](WebPushSettings.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Test notification attempted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_radarr**
+> TestRadarr2XXResponse test_radarr(test_radarr_request)
+
+Test Radarr configuration
+
+Tests if the Radarr configuration is valid. Returns profiles and root folders on success.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.test_radarr2_xx_response import TestRadarr2XXResponse
+from seerr.models.test_radarr_request import TestRadarrRequest
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    test_radarr_request = seerr.TestRadarrRequest() # TestRadarrRequest | 
+
+    try:
+        # Test Radarr configuration
+        api_response = api_instance.test_radarr(test_radarr_request)
+        print("The response of SettingsApi->test_radarr:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_radarr: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **test_radarr_request** | [**TestRadarrRequest**](TestRadarrRequest.md)|  | 
+
+### Return type
+
+[**TestRadarr2XXResponse**](TestRadarr2XXResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Succesfully connected to Radarr instance |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **test_sonarr**
+> TestRadarr2XXResponse test_sonarr(test_radarr_request)
+
+Test Sonarr configuration
+
+Tests if the Sonarr configuration is valid. Returns profiles and root folders on success.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.test_radarr2_xx_response import TestRadarr2XXResponse
+from seerr.models.test_radarr_request import TestRadarrRequest
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    test_radarr_request = seerr.TestRadarrRequest() # TestRadarrRequest | 
+
+    try:
+        # Test Sonarr configuration
+        api_response = api_instance.test_sonarr(test_radarr_request)
+        print("The response of SettingsApi->test_sonarr:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->test_sonarr: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **test_radarr_request** | [**TestRadarrRequest**](TestRadarrRequest.md)|  | 
+
+### Return type
+
+[**TestRadarr2XXResponse**](TestRadarr2XXResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Succesfully connected to Sonarr instance |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_discover**
+> DiscoverSlider update_discover(slider_id, update_discover_request)
+
+Update a single slider
+
+Updates a single slider and return the newly updated slider. Requires the `ADMIN` permission.
+
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.discover_slider import DiscoverSlider
+from seerr.models.update_discover_request import UpdateDiscoverRequest
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    slider_id = 3.4 # float | 
+    update_discover_request = seerr.UpdateDiscoverRequest() # UpdateDiscoverRequest | 
+
+    try:
+        # Update a single slider
+        api_response = api_instance.update_discover(slider_id, update_discover_request)
+        print("The response of SettingsApi->update_discover:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->update_discover: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **slider_id** | **float**|  | 
+ **update_discover_request** | [**UpdateDiscoverRequest**](UpdateDiscoverRequest.md)|  | 
+
+### Return type
+
+[**DiscoverSlider**](DiscoverSlider.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Returns newly added discovery slider |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_radarr**
+> RadarrSettings update_radarr(radarr_id, radarr_settings)
+
+Update Radarr instance
+
+Updates an existing Radarr instance with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.radarr_settings import RadarrSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    radarr_id = 56 # int | Radarr instance ID
+    radarr_settings = seerr.RadarrSettings() # RadarrSettings | 
+
+    try:
+        # Update Radarr instance
+        api_response = api_instance.update_radarr(radarr_id, radarr_settings)
+        print("The response of SettingsApi->update_radarr:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->update_radarr: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **radarr_id** | **int**| Radarr instance ID | 
+ **radarr_settings** | [**RadarrSettings**](RadarrSettings.md)|  | 
+
+### Return type
+
+[**RadarrSettings**](RadarrSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Radarr instance updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_sonarr**
+> SonarrSettings update_sonarr(sonarr_id, sonarr_settings)
+
+Update Sonarr instance
+
+Updates an existing Sonarr instance with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.sonarr_settings import SonarrSettings
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    sonarr_id = 56 # int | Sonarr instance ID
+    sonarr_settings = seerr.SonarrSettings() # SonarrSettings | 
+
+    try:
+        # Update Sonarr instance
+        api_response = api_instance.update_sonarr(sonarr_id, sonarr_settings)
+        print("The response of SettingsApi->update_sonarr:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->update_sonarr: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sonarr_id** | **int**| Sonarr instance ID | 
+ **sonarr_settings** | [**SonarrSettings**](SonarrSettings.md)|  | 
+
+### Return type
+
+[**SonarrSettings**](SonarrSettings.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Sonarr instance updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+

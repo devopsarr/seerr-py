@@ -1,6 +1,6 @@
 [project]
 name = "seerr"
-version = "0.1.0" # x-release-please-version
+version = "0.2.0" # x-release-please-version
 description = "Seerr API"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},

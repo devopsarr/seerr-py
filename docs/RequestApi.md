@@ -418,10 +418,10 @@ with seerr.ApiClient(configuration) as api_client:
     take = 20 # float |  (optional)
     skip = 0 # float |  (optional)
     filter = 'filter_example' # str |  (optional)
-    sort = added # str |  (optional) (default to added)
-    sort_direction = desc # str |  (optional) (default to desc)
+    sort = 'added' # str |  (optional) (default to 'added')
+    sort_direction = 'desc' # str |  (optional) (default to 'desc')
     requested_by = 1 # float |  (optional)
-    media_type = all # str |  (optional) (default to all)
+    media_type = 'all' # str |  (optional) (default to 'all')
 
     try:
         # Get all requests
@@ -442,10 +442,10 @@ Name | Type | Description  | Notes
  **take** | **float**|  | [optional] 
  **skip** | **float**|  | [optional] 
  **filter** | **str**|  | [optional] 
- **sort** | **str**|  | [optional] [default to added]
- **sort_direction** | **str**|  | [optional] [default to desc]
+ **sort** | **str**|  | [optional] [default to &#39;added&#39;]
+ **sort_direction** | **str**|  | [optional] [default to &#39;desc&#39;]
  **requested_by** | **float**|  | [optional] 
- **media_type** | **str**|  | [optional] [default to all]
+ **media_type** | **str**|  | [optional] [default to &#39;all&#39;]
 
 ### Return type
 

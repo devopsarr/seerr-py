@@ -647,8 +647,8 @@ with seerr.ApiClient(configuration) as api_client:
     api_instance = seerr.SearchApi(api_client)
     page = 1 # float |  (optional) (default to 1)
     language = 'en' # str |  (optional)
-    media_type = all # str |  (optional) (default to all)
-    time_window = day # str |  (optional) (default to day)
+    media_type = 'all' # str |  (optional) (default to 'all')
+    time_window = 'day' # str |  (optional) (default to 'day')
 
     try:
         # Trending movies and TV
@@ -668,8 +668,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **float**|  | [optional] [default to 1]
  **language** | **str**|  | [optional] 
- **media_type** | **str**|  | [optional] [default to all]
- **time_window** | **str**|  | [optional] [default to day]
+ **media_type** | **str**|  | [optional] [default to &#39;all&#39;]
+ **time_window** | **str**|  | [optional] [default to &#39;day&#39;]
 
 ### Return type
 

@@ -1444,7 +1444,7 @@ with seerr.ApiClient(configuration) as api_client:
     api_instance = seerr.UsersApi(api_client)
     take = 20 # float |  (optional)
     skip = 0 # float |  (optional)
-    sort = created # str |  (optional) (default to created)
+    sort = 'created' # str |  (optional) (default to 'created')
     sort_direction = 'sort_direction_example' # str | Sort direction. When omitted, the server chooses the direction per sort field (e.g. displayname defaults to asc, requests/updated to desc).  (optional)
     q = 'q_example' # str |  (optional)
     include_ids = 'include_ids_example' # str |  (optional)
@@ -1467,7 +1467,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **take** | **float**|  | [optional] 
  **skip** | **float**|  | [optional] 
- **sort** | **str**|  | [optional] [default to created]
+ **sort** | **str**|  | [optional] [default to &#39;created&#39;]
  **sort_direction** | **str**| Sort direction. When omitted, the server chooses the direction per sort field (e.g. displayname defaults to asc, requests/updated to desc).  | [optional] 
  **q** | **str**|  | [optional] 
  **include_ids** | **str**|  | [optional] 

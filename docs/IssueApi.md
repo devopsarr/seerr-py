@@ -500,8 +500,8 @@ with seerr.ApiClient(configuration) as api_client:
     api_instance = seerr.IssueApi(api_client)
     take = 20 # float |  (optional)
     skip = 0 # float |  (optional)
-    sort = added # str |  (optional) (default to added)
-    filter = open # str |  (optional) (default to open)
+    sort = 'added' # str |  (optional) (default to 'added')
+    filter = 'open' # str |  (optional) (default to 'open')
     requested_by = 1 # float |  (optional)
 
     try:
@@ -522,8 +522,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **take** | **float**|  | [optional] 
  **skip** | **float**|  | [optional] 
- **sort** | **str**|  | [optional] [default to added]
- **filter** | **str**|  | [optional] [default to open]
+ **sort** | **str**|  | [optional] [default to &#39;added&#39;]
+ **filter** | **str**|  | [optional] [default to &#39;open&#39;]
  **requested_by** | **float**|  | [optional] 
 
 ### Return type
@@ -805,7 +805,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_issue_comment**
-> IssueComment update_issue_comment(comment_id, test_metadatas2_xx_response)
+> IssueComment update_issue_comment(comment_id, update_issue_comment_request)
 
 Update issue comment
 
@@ -820,7 +820,7 @@ Updates and returns a single issue comment in JSON format.
 ```python
 import seerr
 from seerr.models.issue_comment import IssueComment
-from seerr.models.test_metadatas2_xx_response import TestMetadatas2XXResponse
+from seerr.models.update_issue_comment_request import UpdateIssueCommentRequest
 from seerr.rest import ApiException
 from pprint import pprint
 
@@ -852,11 +852,11 @@ with seerr.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = seerr.IssueApi(api_client)
     comment_id = '1' # str | 
-    test_metadatas2_xx_response = seerr.TestMetadatas2XXResponse() # TestMetadatas2XXResponse | 
+    update_issue_comment_request = seerr.UpdateIssueCommentRequest() # UpdateIssueCommentRequest | 
 
     try:
         # Update issue comment
-        api_response = api_instance.update_issue_comment(comment_id, test_metadatas2_xx_response)
+        api_response = api_instance.update_issue_comment(comment_id, update_issue_comment_request)
         print("The response of IssueApi->update_issue_comment:\n")
         pprint(api_response)
     except Exception as e:
@@ -871,7 +871,7 @@ with seerr.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **comment_id** | **str**|  | 
- **test_metadatas2_xx_response** | [**TestMetadatas2XXResponse**](TestMetadatas2XXResponse.md)|  | 
+ **update_issue_comment_request** | [**UpdateIssueCommentRequest**](UpdateIssueCommentRequest.md)|  | 
 
 ### Return type
 

@@ -573,7 +573,7 @@ with seerr.ApiClient(configuration) as api_client:
     take = 25 # float |  (optional)
     skip = 0 # float |  (optional)
     search = 'dune' # str |  (optional)
-    filter = manual # str |  (optional) (default to manual)
+    filter = 'manual' # str |  (optional) (default to 'manual')
 
     try:
         # Returns blocklisted items
@@ -594,7 +594,7 @@ Name | Type | Description  | Notes
  **take** | **float**|  | [optional] 
  **skip** | **float**|  | [optional] 
  **search** | **str**|  | [optional] 
- **filter** | **str**|  | [optional] [default to manual]
+ **filter** | **str**|  | [optional] [default to &#39;manual&#39;]
 
 ### Return type
 
@@ -751,7 +751,7 @@ with seerr.ApiClient(configuration) as api_client:
     take = 25 # float |  (optional)
     skip = 0 # float |  (optional)
     search = 'dune' # str |  (optional)
-    filter = manual # str |  (optional) (default to manual)
+    filter = 'manual' # str |  (optional) (default to 'manual')
 
     try:
         # Returns blocklisted items
@@ -772,7 +772,7 @@ Name | Type | Description  | Notes
  **take** | **float**|  | [optional] 
  **skip** | **float**|  | [optional] 
  **search** | **str**|  | [optional] 
- **filter** | **str**|  | [optional] [default to manual]
+ **filter** | **str**|  | [optional] [default to &#39;manual&#39;]
 
 ### Return type
 

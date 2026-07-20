@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_discover_add**
-> DiscoverSlider create_discover_add(update_discover_request)
+> DiscoverSlider create_discover_add(create_discover_add_request)
 
 Add a new slider
 
@@ -358,8 +358,8 @@ Add a single slider and return the newly created slider. Requires the `ADMIN` pe
 
 ```python
 import seerr
+from seerr.models.create_discover_add_request import CreateDiscoverAddRequest
 from seerr.models.discover_slider import DiscoverSlider
-from seerr.models.update_discover_request import UpdateDiscoverRequest
 from seerr.rest import ApiException
 from pprint import pprint
 
@@ -390,11 +390,11 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with seerr.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = seerr.SettingsApi(api_client)
-    update_discover_request = seerr.UpdateDiscoverRequest() # UpdateDiscoverRequest | 
+    create_discover_add_request = seerr.CreateDiscoverAddRequest() # CreateDiscoverAddRequest | 
 
     try:
         # Add a new slider
-        api_response = api_instance.create_discover_add(update_discover_request)
+        api_response = api_instance.create_discover_add(create_discover_add_request)
         print("The response of SettingsApi->create_discover_add:\n")
         pprint(api_response)
     except Exception as e:
@@ -408,7 +408,7 @@ with seerr.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **update_discover_request** | [**UpdateDiscoverRequest**](UpdateDiscoverRequest.md)|  | 
+ **create_discover_add_request** | [**CreateDiscoverAddRequest**](CreateDiscoverAddRequest.md)|  | 
 
 ### Return type
 
@@ -4914,7 +4914,7 @@ with seerr.ApiClient(configuration) as api_client:
     api_instance = seerr.SettingsApi(api_client)
     take = 25 # float |  (optional)
     skip = 0 # float |  (optional)
-    filter = debug # str |  (optional) (default to debug)
+    filter = 'debug' # str |  (optional) (default to 'debug')
     search = 'plex' # str |  (optional)
 
     try:
@@ -4935,7 +4935,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **take** | **float**|  | [optional] 
  **skip** | **float**|  | [optional] 
- **filter** | **str**|  | [optional] [default to debug]
+ **filter** | **str**|  | [optional] [default to &#39;debug&#39;]
  **search** | **str**|  | [optional] 
 
 ### Return type
@@ -6651,7 +6651,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **test_sonarr**
-> TestRadarr2XXResponse test_sonarr(test_radarr_request)
+> TestRadarr2XXResponse test_sonarr(test_sonarr_request)
 
 Test Sonarr configuration
 
@@ -6665,7 +6665,7 @@ Tests if the Sonarr configuration is valid. Returns profiles and root folders on
 ```python
 import seerr
 from seerr.models.test_radarr2_xx_response import TestRadarr2XXResponse
-from seerr.models.test_radarr_request import TestRadarrRequest
+from seerr.models.test_sonarr_request import TestSonarrRequest
 from seerr.rest import ApiException
 from pprint import pprint
 
@@ -6696,11 +6696,11 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with seerr.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = seerr.SettingsApi(api_client)
-    test_radarr_request = seerr.TestRadarrRequest() # TestRadarrRequest | 
+    test_sonarr_request = seerr.TestSonarrRequest() # TestSonarrRequest | 
 
     try:
         # Test Sonarr configuration
-        api_response = api_instance.test_sonarr(test_radarr_request)
+        api_response = api_instance.test_sonarr(test_sonarr_request)
         print("The response of SettingsApi->test_sonarr:\n")
         pprint(api_response)
     except Exception as e:
@@ -6714,7 +6714,7 @@ with seerr.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **test_radarr_request** | [**TestRadarrRequest**](TestRadarrRequest.md)|  | 
+ **test_sonarr_request** | [**TestSonarrRequest**](TestSonarrRequest.md)|  | 
 
 ### Return type
 

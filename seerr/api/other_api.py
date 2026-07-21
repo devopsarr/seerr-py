@@ -340,7 +340,7 @@ class OtherApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '500': "GetCertificationsMovie500Response",
+            '500': "GetCertificationsTv500Response",
             '2XX': "CertificationResponse",
         }
         response_data = self.api_client.call_api(
@@ -404,7 +404,7 @@ class OtherApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '500': "GetCertificationsMovie500Response",
+            '500': "GetCertificationsTv500Response",
             '2XX': "CertificationResponse",
         }
         response_data = self.api_client.call_api(
@@ -468,7 +468,7 @@ class OtherApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '500': "GetCertificationsMovie500Response",
+            '500': "GetCertificationsTv500Response",
             '2XX': "CertificationResponse",
         }
         response_data = self.api_client.call_api(
@@ -594,7 +594,7 @@ class OtherApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '500': "TestMetadatas2XXResponse",
+            '500': "GetKeywordByKeywordId500Response",
             '2XX': "Keyword",
         }
         response_data = self.api_client.call_api(
@@ -662,7 +662,7 @@ class OtherApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '500': "TestMetadatas2XXResponse",
+            '500': "GetKeywordByKeywordId500Response",
             '2XX': "Keyword",
         }
         response_data = self.api_client.call_api(
@@ -730,7 +730,7 @@ class OtherApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            '500': "TestMetadatas2XXResponse",
+            '500': "GetKeywordByKeywordId500Response",
             '2XX': "Keyword",
         }
         response_data = self.api_client.call_api(

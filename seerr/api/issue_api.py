@@ -24,7 +24,7 @@ from seerr.models.get_issue2_xx_response import GetIssue2XXResponse
 from seerr.models.get_issue_count2_xx_response import GetIssueCount2XXResponse
 from seerr.models.issue import Issue
 from seerr.models.issue_comment import IssueComment
-from seerr.models.test_metadatas2_xx_response import TestMetadatas2XXResponse
+from seerr.models.update_issue_comment_request import UpdateIssueCommentRequest
 
 from seerr.api_client import ApiClient, RequestSerialized
 from seerr.api_response import ApiResponse
@@ -2503,7 +2503,7 @@ class IssueApi:
     def update_issue_comment(
         self,
         comment_id: StrictStr,
-        test_metadatas2_xx_response: TestMetadatas2XXResponse,
+        update_issue_comment_request: UpdateIssueCommentRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2523,8 +2523,8 @@ class IssueApi:
 
         :param comment_id: (required)
         :type comment_id: str
-        :param test_metadatas2_xx_response: (required)
-        :type test_metadatas2_xx_response: TestMetadatas2XXResponse
+        :param update_issue_comment_request: (required)
+        :type update_issue_comment_request: UpdateIssueCommentRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2549,7 +2549,7 @@ class IssueApi:
 
         _param = self._update_issue_comment_serialize(
             comment_id=comment_id,
-            test_metadatas2_xx_response=test_metadatas2_xx_response,
+            update_issue_comment_request=update_issue_comment_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2574,7 +2574,7 @@ class IssueApi:
     def update_issue_comment_with_http_info(
         self,
         comment_id: StrictStr,
-        test_metadatas2_xx_response: TestMetadatas2XXResponse,
+        update_issue_comment_request: UpdateIssueCommentRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2594,8 +2594,8 @@ class IssueApi:
 
         :param comment_id: (required)
         :type comment_id: str
-        :param test_metadatas2_xx_response: (required)
-        :type test_metadatas2_xx_response: TestMetadatas2XXResponse
+        :param update_issue_comment_request: (required)
+        :type update_issue_comment_request: UpdateIssueCommentRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2620,7 +2620,7 @@ class IssueApi:
 
         _param = self._update_issue_comment_serialize(
             comment_id=comment_id,
-            test_metadatas2_xx_response=test_metadatas2_xx_response,
+            update_issue_comment_request=update_issue_comment_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2645,7 +2645,7 @@ class IssueApi:
     def update_issue_comment_without_preload_content(
         self,
         comment_id: StrictStr,
-        test_metadatas2_xx_response: TestMetadatas2XXResponse,
+        update_issue_comment_request: UpdateIssueCommentRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -2665,8 +2665,8 @@ class IssueApi:
 
         :param comment_id: (required)
         :type comment_id: str
-        :param test_metadatas2_xx_response: (required)
-        :type test_metadatas2_xx_response: TestMetadatas2XXResponse
+        :param update_issue_comment_request: (required)
+        :type update_issue_comment_request: UpdateIssueCommentRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -2691,7 +2691,7 @@ class IssueApi:
 
         _param = self._update_issue_comment_serialize(
             comment_id=comment_id,
-            test_metadatas2_xx_response=test_metadatas2_xx_response,
+            update_issue_comment_request=update_issue_comment_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -2711,7 +2711,7 @@ class IssueApi:
     def _update_issue_comment_serialize(
         self,
         comment_id,
-        test_metadatas2_xx_response,
+        update_issue_comment_request,
         _request_auth,
         _content_type,
         _headers,
@@ -2739,8 +2739,8 @@ class IssueApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if test_metadatas2_xx_response is not None:
-            _body_params = test_metadatas2_xx_response
+        if update_issue_comment_request is not None:
+            _body_params = update_issue_comment_request
 
 
         # set the HTTP header `Accept`

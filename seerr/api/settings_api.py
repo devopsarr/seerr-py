@@ -18,6 +18,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictFloat, StrictInt, StrictStr, field_validator
 from typing import List, Optional, Union
 from typing_extensions import Annotated
+from seerr.models.create_discover_add_request import CreateDiscoverAddRequest
 from seerr.models.create_jellyfin_sync_request import CreateJellyfinSyncRequest
 from seerr.models.create_jobs_schedule_request import CreateJobsScheduleRequest
 from seerr.models.discord_settings import DiscordSettings
@@ -55,6 +56,7 @@ from seerr.models.test_metadatas2_xx_response import TestMetadatas2XXResponse
 from seerr.models.test_metadatas_request import TestMetadatasRequest
 from seerr.models.test_radarr2_xx_response import TestRadarr2XXResponse
 from seerr.models.test_radarr_request import TestRadarrRequest
+from seerr.models.test_sonarr_request import TestSonarrRequest
 from seerr.models.update_discover_request import UpdateDiscoverRequest
 from seerr.models.web_push_settings import WebPushSettings
 from seerr.models.webhook_settings import WebhookSettings
@@ -866,7 +868,7 @@ class SettingsApi:
     @validate_call
     def create_discover_add(
         self,
-        update_discover_request: UpdateDiscoverRequest,
+        create_discover_add_request: CreateDiscoverAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -884,8 +886,8 @@ class SettingsApi:
 
         Add a single slider and return the newly created slider. Requires the `ADMIN` permission. 
 
-        :param update_discover_request: (required)
-        :type update_discover_request: UpdateDiscoverRequest
+        :param create_discover_add_request: (required)
+        :type create_discover_add_request: CreateDiscoverAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -909,7 +911,7 @@ class SettingsApi:
         """ # noqa: E501
 
         _param = self._create_discover_add_serialize(
-            update_discover_request=update_discover_request,
+            create_discover_add_request=create_discover_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -933,7 +935,7 @@ class SettingsApi:
     @validate_call
     def create_discover_add_with_http_info(
         self,
-        update_discover_request: UpdateDiscoverRequest,
+        create_discover_add_request: CreateDiscoverAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -951,8 +953,8 @@ class SettingsApi:
 
         Add a single slider and return the newly created slider. Requires the `ADMIN` permission. 
 
-        :param update_discover_request: (required)
-        :type update_discover_request: UpdateDiscoverRequest
+        :param create_discover_add_request: (required)
+        :type create_discover_add_request: CreateDiscoverAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -976,7 +978,7 @@ class SettingsApi:
         """ # noqa: E501
 
         _param = self._create_discover_add_serialize(
-            update_discover_request=update_discover_request,
+            create_discover_add_request=create_discover_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1000,7 +1002,7 @@ class SettingsApi:
     @validate_call
     def create_discover_add_without_preload_content(
         self,
-        update_discover_request: UpdateDiscoverRequest,
+        create_discover_add_request: CreateDiscoverAddRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -1018,8 +1020,8 @@ class SettingsApi:
 
         Add a single slider and return the newly created slider. Requires the `ADMIN` permission. 
 
-        :param update_discover_request: (required)
-        :type update_discover_request: UpdateDiscoverRequest
+        :param create_discover_add_request: (required)
+        :type create_discover_add_request: CreateDiscoverAddRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -1043,7 +1045,7 @@ class SettingsApi:
         """ # noqa: E501
 
         _param = self._create_discover_add_serialize(
-            update_discover_request=update_discover_request,
+            create_discover_add_request=create_discover_add_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -1062,7 +1064,7 @@ class SettingsApi:
 
     def _create_discover_add_serialize(
         self,
-        update_discover_request,
+        create_discover_add_request,
         _request_auth,
         _content_type,
         _headers,
@@ -1088,8 +1090,8 @@ class SettingsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if update_discover_request is not None:
-            _body_params = update_discover_request
+        if create_discover_add_request is not None:
+            _body_params = create_discover_add_request
 
 
         # set the HTTP header `Accept`
@@ -20522,7 +20524,7 @@ class SettingsApi:
     @validate_call
     def test_sonarr(
         self,
-        test_radarr_request: TestRadarrRequest,
+        test_sonarr_request: TestSonarrRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -20540,8 +20542,8 @@ class SettingsApi:
 
         Tests if the Sonarr configuration is valid. Returns profiles and root folders on success.
 
-        :param test_radarr_request: (required)
-        :type test_radarr_request: TestRadarrRequest
+        :param test_sonarr_request: (required)
+        :type test_sonarr_request: TestSonarrRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -20565,7 +20567,7 @@ class SettingsApi:
         """ # noqa: E501
 
         _param = self._test_sonarr_serialize(
-            test_radarr_request=test_radarr_request,
+            test_sonarr_request=test_sonarr_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -20589,7 +20591,7 @@ class SettingsApi:
     @validate_call
     def test_sonarr_with_http_info(
         self,
-        test_radarr_request: TestRadarrRequest,
+        test_sonarr_request: TestSonarrRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -20607,8 +20609,8 @@ class SettingsApi:
 
         Tests if the Sonarr configuration is valid. Returns profiles and root folders on success.
 
-        :param test_radarr_request: (required)
-        :type test_radarr_request: TestRadarrRequest
+        :param test_sonarr_request: (required)
+        :type test_sonarr_request: TestSonarrRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -20632,7 +20634,7 @@ class SettingsApi:
         """ # noqa: E501
 
         _param = self._test_sonarr_serialize(
-            test_radarr_request=test_radarr_request,
+            test_sonarr_request=test_sonarr_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -20656,7 +20658,7 @@ class SettingsApi:
     @validate_call
     def test_sonarr_without_preload_content(
         self,
-        test_radarr_request: TestRadarrRequest,
+        test_sonarr_request: TestSonarrRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -20674,8 +20676,8 @@ class SettingsApi:
 
         Tests if the Sonarr configuration is valid. Returns profiles and root folders on success.
 
-        :param test_radarr_request: (required)
-        :type test_radarr_request: TestRadarrRequest
+        :param test_sonarr_request: (required)
+        :type test_sonarr_request: TestSonarrRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -20699,7 +20701,7 @@ class SettingsApi:
         """ # noqa: E501
 
         _param = self._test_sonarr_serialize(
-            test_radarr_request=test_radarr_request,
+            test_sonarr_request=test_sonarr_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -20718,7 +20720,7 @@ class SettingsApi:
 
     def _test_sonarr_serialize(
         self,
-        test_radarr_request,
+        test_sonarr_request,
         _request_auth,
         _content_type,
         _headers,
@@ -20744,8 +20746,8 @@ class SettingsApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if test_radarr_request is not None:
-            _body_params = test_radarr_request
+        if test_sonarr_request is not None:
+            _body_params = test_sonarr_request
 
 
         # set the HTTP header `Accept`

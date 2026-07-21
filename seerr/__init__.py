@@ -57,6 +57,7 @@ __all__ = [
     "CreateAuthPlexRequest",
     "CreateAuthResetPasswordByGuidRequest",
     "CreateAuthResetPasswordRequest",
+    "CreateDiscoverAddRequest",
     "CreateIssueCommentRequest",
     "CreateIssueRequest",
     "CreateJellyfinSyncRequest",
@@ -93,6 +94,7 @@ __all__ = [
     "GetCache2XXResponseImageCache",
     "GetCache2XXResponseImageCacheTmdb",
     "GetCertificationsMovie500Response",
+    "GetCertificationsTv500Response",
     "GetDiscoverMovies2XXResponse",
     "GetDiscoverMoviesGenreByGenreId2XXResponse",
     "GetDiscoverMoviesLanguageByLanguage2XXResponse",
@@ -104,6 +106,7 @@ __all__ = [
     "GetIssue2XXResponse",
     "GetIssueCount2XXResponse",
     "GetJellyfinSync2XXResponse",
+    "GetKeywordByKeywordId500Response",
     "GetMedia2XXResponse",
     "GetMediaWatchData2XXResponse",
     "GetMediaWatchData2XXResponseData",
@@ -142,6 +145,7 @@ __all__ = [
     "Keyword",
     "ListDiscoverGenresliderMovie2XXResponseInner",
     "ListGenresMovie2XXResponseInner",
+    "ListGenresTv2XXResponseInner",
     "ListJellyfinUsers2XXResponseInner",
     "ListLanguages2XXResponseInner",
     "ListLogs2XXResponseInner",
@@ -208,12 +212,14 @@ __all__ = [
     "TestMetadatasRequest",
     "TestRadarr2XXResponse",
     "TestRadarrRequest",
+    "TestSonarrRequest",
     "TvDetails",
     "TvDetailsContentRatings",
     "TvDetailsContentRatingsResultsInner",
     "TvDetailsCreatedByInner",
     "TvResult",
     "UpdateDiscoverRequest",
+    "UpdateIssueCommentRequest",
     "UpdateRequestRequest",
     "User",
     "UserSettings",
@@ -271,6 +277,7 @@ from seerr.models.create_auth_logout2_xx_response import CreateAuthLogout2XXResp
 from seerr.models.create_auth_plex_request import CreateAuthPlexRequest as CreateAuthPlexRequest
 from seerr.models.create_auth_reset_password_by_guid_request import CreateAuthResetPasswordByGuidRequest as CreateAuthResetPasswordByGuidRequest
 from seerr.models.create_auth_reset_password_request import CreateAuthResetPasswordRequest as CreateAuthResetPasswordRequest
+from seerr.models.create_discover_add_request import CreateDiscoverAddRequest as CreateDiscoverAddRequest
 from seerr.models.create_issue_comment_request import CreateIssueCommentRequest as CreateIssueCommentRequest
 from seerr.models.create_issue_request import CreateIssueRequest as CreateIssueRequest
 from seerr.models.create_jellyfin_sync_request import CreateJellyfinSyncRequest as CreateJellyfinSyncRequest
@@ -307,6 +314,7 @@ from seerr.models.get_cache2_xx_response_dns_cache_stats import GetCache2XXRespo
 from seerr.models.get_cache2_xx_response_image_cache import GetCache2XXResponseImageCache as GetCache2XXResponseImageCache
 from seerr.models.get_cache2_xx_response_image_cache_tmdb import GetCache2XXResponseImageCacheTmdb as GetCache2XXResponseImageCacheTmdb
 from seerr.models.get_certifications_movie500_response import GetCertificationsMovie500Response as GetCertificationsMovie500Response
+from seerr.models.get_certifications_tv500_response import GetCertificationsTv500Response as GetCertificationsTv500Response
 from seerr.models.get_discover_movies2_xx_response import GetDiscoverMovies2XXResponse as GetDiscoverMovies2XXResponse
 from seerr.models.get_discover_movies_genre_by_genre_id2_xx_response import GetDiscoverMoviesGenreByGenreId2XXResponse as GetDiscoverMoviesGenreByGenreId2XXResponse
 from seerr.models.get_discover_movies_language_by_language2_xx_response import GetDiscoverMoviesLanguageByLanguage2XXResponse as GetDiscoverMoviesLanguageByLanguage2XXResponse
@@ -318,6 +326,7 @@ from seerr.models.get_discover_tv_network_by_network_id2_xx_response import GetD
 from seerr.models.get_issue2_xx_response import GetIssue2XXResponse as GetIssue2XXResponse
 from seerr.models.get_issue_count2_xx_response import GetIssueCount2XXResponse as GetIssueCount2XXResponse
 from seerr.models.get_jellyfin_sync2_xx_response import GetJellyfinSync2XXResponse as GetJellyfinSync2XXResponse
+from seerr.models.get_keyword_by_keyword_id500_response import GetKeywordByKeywordId500Response as GetKeywordByKeywordId500Response
 from seerr.models.get_media2_xx_response import GetMedia2XXResponse as GetMedia2XXResponse
 from seerr.models.get_media_watch_data2_xx_response import GetMediaWatchData2XXResponse as GetMediaWatchData2XXResponse
 from seerr.models.get_media_watch_data2_xx_response_data import GetMediaWatchData2XXResponseData as GetMediaWatchData2XXResponseData
@@ -356,6 +365,7 @@ from seerr.models.job import Job as Job
 from seerr.models.keyword import Keyword as Keyword
 from seerr.models.list_discover_genreslider_movie2_xx_response_inner import ListDiscoverGenresliderMovie2XXResponseInner as ListDiscoverGenresliderMovie2XXResponseInner
 from seerr.models.list_genres_movie2_xx_response_inner import ListGenresMovie2XXResponseInner as ListGenresMovie2XXResponseInner
+from seerr.models.list_genres_tv2_xx_response_inner import ListGenresTv2XXResponseInner as ListGenresTv2XXResponseInner
 from seerr.models.list_jellyfin_users2_xx_response_inner import ListJellyfinUsers2XXResponseInner as ListJellyfinUsers2XXResponseInner
 from seerr.models.list_languages2_xx_response_inner import ListLanguages2XXResponseInner as ListLanguages2XXResponseInner
 from seerr.models.list_logs2_xx_response_inner import ListLogs2XXResponseInner as ListLogs2XXResponseInner
@@ -422,12 +432,14 @@ from seerr.models.test_metadatas2_xx_response import TestMetadatas2XXResponse as
 from seerr.models.test_metadatas_request import TestMetadatasRequest as TestMetadatasRequest
 from seerr.models.test_radarr2_xx_response import TestRadarr2XXResponse as TestRadarr2XXResponse
 from seerr.models.test_radarr_request import TestRadarrRequest as TestRadarrRequest
+from seerr.models.test_sonarr_request import TestSonarrRequest as TestSonarrRequest
 from seerr.models.tv_details import TvDetails as TvDetails
 from seerr.models.tv_details_content_ratings import TvDetailsContentRatings as TvDetailsContentRatings
 from seerr.models.tv_details_content_ratings_results_inner import TvDetailsContentRatingsResultsInner as TvDetailsContentRatingsResultsInner
 from seerr.models.tv_details_created_by_inner import TvDetailsCreatedByInner as TvDetailsCreatedByInner
 from seerr.models.tv_result import TvResult as TvResult
 from seerr.models.update_discover_request import UpdateDiscoverRequest as UpdateDiscoverRequest
+from seerr.models.update_issue_comment_request import UpdateIssueCommentRequest as UpdateIssueCommentRequest
 from seerr.models.update_request_request import UpdateRequestRequest as UpdateRequestRequest
 from seerr.models.user import User as User
 from seerr.models.user_settings import UserSettings as UserSettings

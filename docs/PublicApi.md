@@ -9,11 +9,11 @@ Method | HTTP request | Description
 
 
 # **get_status**
-> GetStatus2XXResponse get_status()
+> GetStatus2XXResponse get_status(check_update_available=check_update_available)
 
 Get Seerr status
 
-Returns the current Seerr status in a JSON object.
+Returns the current Seerr status in a JSON object. updateAvailable and commitsBehind are omitted when checkUpdateAvailable is false.
 
 ### Example
 
@@ -35,10 +35,11 @@ configuration = seerr.Configuration(
 with seerr.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = seerr.PublicApi(api_client)
+    check_update_available = false # bool | If false, updateAvailable and commitsBehind will be omitted from the response. Defaults to the versionCheck setting. (optional)
 
     try:
         # Get Seerr status
-        api_response = api_instance.get_status()
+        api_response = api_instance.get_status(check_update_available=check_update_available)
         print("The response of PublicApi->get_status:\n")
         pprint(api_response)
     except Exception as e:
@@ -49,7 +50,10 @@ with seerr.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **check_update_available** | **bool**| If false, updateAvailable and commitsBehind will be omitted from the response. Defaults to the versionCheck setting. | [optional] 
 
 ### Return type
 

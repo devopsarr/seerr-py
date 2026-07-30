@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **issue_type** | **float** |  | [optional] 
 **message** | **str** |  | [optional] 
 **media_id** | **float** |  | [optional] 
+**user_id** | **float** |  | [optional] 
 
 ## Example
 

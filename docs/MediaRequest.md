@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **server_id** | **float** |  | [optional] 
 **profile_id** | **float** |  | [optional] 
 **root_folder** | **str** |  | [optional] 
+**ignore_quota** | **bool** | If true, this request will not count against the user&#39;s quota. Requires MANAGE_REQUESTS permission. | [optional] 
 
 ## Example
 

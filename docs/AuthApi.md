@@ -5,9 +5,12 @@ All URIs are relative to *http://localhost:5055/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_auth_jellyfin**](AuthApi.md#create_auth_jellyfin) | **POST** /auth/jellyfin | Sign in using a Jellyfin username and password
+[**create_auth_jellyfin_quickconnect_authenticate**](AuthApi.md#create_auth_jellyfin_quickconnect_authenticate) | **POST** /auth/jellyfin/quickconnect/authenticate | Authenticate with Quick Connect
+[**create_auth_jellyfin_quickconnect_initiate**](AuthApi.md#create_auth_jellyfin_quickconnect_initiate) | **POST** /auth/jellyfin/quickconnect/initiate | Initiate Jellyfin Quick Connect
 [**create_auth_local**](AuthApi.md#create_auth_local) | **POST** /auth/local | Sign in using a local account
 [**create_auth_logout**](AuthApi.md#create_auth_logout) | **POST** /auth/logout | Sign out and clear session cookie
 [**create_auth_plex**](AuthApi.md#create_auth_plex) | **POST** /auth/plex | Sign in using a Plex token
+[**get_auth_jellyfin_quickconnect_check**](AuthApi.md#get_auth_jellyfin_quickconnect_check) | **GET** /auth/jellyfin/quickconnect/check | Check Quick Connect authorization status
 [**get_auth_me**](AuthApi.md#get_auth_me) | **GET** /auth/me | Get logged-in user
 
 
@@ -77,6 +80,142 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **2XX** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_auth_jellyfin_quickconnect_authenticate**
+> User create_auth_jellyfin_quickconnect_authenticate(create_auth_jellyfin_quickconnect_authenticate_request)
+
+Authenticate with Quick Connect
+
+Completes the Quick Connect authentication flow and creates a user session.
+
+### Example
+
+
+```python
+import seerr
+from seerr.models.create_auth_jellyfin_quickconnect_authenticate_request import CreateAuthJellyfinQuickconnectAuthenticateRequest
+from seerr.models.user import User
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.AuthApi(api_client)
+    create_auth_jellyfin_quickconnect_authenticate_request = seerr.CreateAuthJellyfinQuickconnectAuthenticateRequest() # CreateAuthJellyfinQuickconnectAuthenticateRequest | 
+
+    try:
+        # Authenticate with Quick Connect
+        api_response = api_instance.create_auth_jellyfin_quickconnect_authenticate(create_auth_jellyfin_quickconnect_authenticate_request)
+        print("The response of AuthApi->create_auth_jellyfin_quickconnect_authenticate:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AuthApi->create_auth_jellyfin_quickconnect_authenticate: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_auth_jellyfin_quickconnect_authenticate_request** | [**CreateAuthJellyfinQuickconnectAuthenticateRequest**](CreateAuthJellyfinQuickconnectAuthenticateRequest.md)|  | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**403** | Quick Connect not authorized or access denied |  -  |
+**500** | Authentication failed |  -  |
+**2XX** | Successfully authenticated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_auth_jellyfin_quickconnect_initiate**
+> CreateAuthJellyfinQuickconnectInitiate2XXResponse create_auth_jellyfin_quickconnect_initiate()
+
+Initiate Jellyfin Quick Connect
+
+Initiates a Quick Connect session and returns a code for the user to authorize on their Jellyfin server.
+
+### Example
+
+
+```python
+import seerr
+from seerr.models.create_auth_jellyfin_quickconnect_initiate2_xx_response import CreateAuthJellyfinQuickconnectInitiate2XXResponse
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.AuthApi(api_client)
+
+    try:
+        # Initiate Jellyfin Quick Connect
+        api_response = api_instance.create_auth_jellyfin_quickconnect_initiate()
+        print("The response of AuthApi->create_auth_jellyfin_quickconnect_initiate:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AuthApi->create_auth_jellyfin_quickconnect_initiate: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**CreateAuthJellyfinQuickconnectInitiate2XXResponse**](CreateAuthJellyfinQuickconnectInitiate2XXResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**500** | Failed to initiate Quick Connect |  -  |
+**2XX** | Quick Connect session initiated |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -297,6 +436,75 @@ No authorization required
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **2XX** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_auth_jellyfin_quickconnect_check**
+> GetAuthJellyfinQuickconnectCheck2XXResponse get_auth_jellyfin_quickconnect_check(secret)
+
+Check Quick Connect authorization status
+
+Checks if the Quick Connect code has been authorized by the user.
+
+### Example
+
+
+```python
+import seerr
+from seerr.models.get_auth_jellyfin_quickconnect_check2_xx_response import GetAuthJellyfinQuickconnectCheck2XXResponse
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.AuthApi(api_client)
+    secret = 'secret_example' # str | The secret returned from the initiate endpoint
+
+    try:
+        # Check Quick Connect authorization status
+        api_response = api_instance.get_auth_jellyfin_quickconnect_check(secret)
+        print("The response of AuthApi->get_auth_jellyfin_quickconnect_check:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling AuthApi->get_auth_jellyfin_quickconnect_check: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **secret** | **str**| The secret returned from the initiate endpoint | 
+
+### Return type
+
+[**GetAuthJellyfinQuickconnectCheck2XXResponse**](GetAuthJellyfinQuickconnectCheck2XXResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**404** | Quick Connect session not found or expired |  -  |
+**2XX** | Authorization status returned |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

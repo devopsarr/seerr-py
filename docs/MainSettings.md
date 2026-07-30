@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **new_plex_login** | **bool** |  | [optional] 
 **default_permissions** | **float** |  | [optional] 
 **enable_special_episodes** | **bool** |  | [optional] 
+**version_check** | **bool** |  | [optional] 
 
 ## Example
 

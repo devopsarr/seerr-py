@@ -87,8 +87,7 @@ class GetCache2XXResponse(BaseModel):
         _items = []
         if self.api_caches:
             for _item_api_caches in self.api_caches:
-                if _item_api_caches:
-                    _items.append(_item_api_caches.to_dict())
+                _items.append(_item_api_caches.to_dict() if _item_api_caches is not None else None)
             _dict['apiCaches'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

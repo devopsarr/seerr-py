@@ -78,8 +78,7 @@ class GetUserWatchData2XXResponse(BaseModel):
         _items = []
         if self.recently_watched:
             for _item_recently_watched in self.recently_watched:
-                if _item_recently_watched:
-                    _items.append(_item_recently_watched.to_dict())
+                _items.append(_item_recently_watched.to_dict() if _item_recently_watched is not None else None)
             _dict['recentlyWatched'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

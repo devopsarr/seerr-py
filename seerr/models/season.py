@@ -84,8 +84,7 @@ class Season(BaseModel):
         _items = []
         if self.episodes:
             for _item_episodes in self.episodes:
-                if _item_episodes:
-                    _items.append(_item_episodes.to_dict())
+                _items.append(_item_episodes.to_dict() if _item_episodes is not None else None)
             _dict['episodes'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

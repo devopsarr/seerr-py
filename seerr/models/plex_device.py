@@ -100,8 +100,7 @@ class PlexDevice(BaseModel):
         _items = []
         if self.connection:
             for _item_connection in self.connection:
-                if _item_connection:
-                    _items.append(_item_connection.to_dict())
+                _items.append(_item_connection.to_dict() if _item_connection is not None else None)
             _dict['connection'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

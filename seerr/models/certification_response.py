@@ -77,10 +77,9 @@ class CertificationResponse(BaseModel):
         _field_dict_of_array = {}
         if self.certifications:
             for _key_certifications in self.certifications:
-                if self.certifications[_key_certifications] is not None:
-                    _field_dict_of_array[_key_certifications] = [
-                        _item.to_dict() for _item in self.certifications[_key_certifications]
-                    ]
+                _field_dict_of_array[_key_certifications] = [
+                    _item.to_dict() if _item is not None else None for _item in self.certifications[_key_certifications]
+                ] if self.certifications[_key_certifications] is not None else None
             _dict['certifications'] = _field_dict_of_array
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

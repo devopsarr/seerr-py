@@ -84,8 +84,7 @@ class GetPlexSync2XXResponse(BaseModel):
         _items = []
         if self.libraries:
             for _item_libraries in self.libraries:
-                if _item_libraries:
-                    _items.append(_item_libraries.to_dict())
+                _items.append(_item_libraries.to_dict() if _item_libraries is not None else None)
             _dict['libraries'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

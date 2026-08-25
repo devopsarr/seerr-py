@@ -77,8 +77,7 @@ class TestRadarr2XXResponse(BaseModel):
         _items = []
         if self.profiles:
             for _item_profiles in self.profiles:
-                if _item_profiles:
-                    _items.append(_item_profiles.to_dict())
+                _items.append(_item_profiles.to_dict() if _item_profiles is not None else None)
             _dict['profiles'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

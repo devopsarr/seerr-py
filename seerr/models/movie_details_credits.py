@@ -79,15 +79,13 @@ class MovieDetailsCredits(BaseModel):
         _items = []
         if self.cast:
             for _item_cast in self.cast:
-                if _item_cast:
-                    _items.append(_item_cast.to_dict())
+                _items.append(_item_cast.to_dict() if _item_cast is not None else None)
             _dict['cast'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in crew (list)
         _items = []
         if self.crew:
             for _item_crew in self.crew:
-                if _item_crew:
-                    _items.append(_item_crew.to_dict())
+                _items.append(_item_crew.to_dict() if _item_crew is not None else None)
             _dict['crew'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

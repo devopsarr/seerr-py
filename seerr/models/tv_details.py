@@ -128,15 +128,13 @@ class TvDetails(BaseModel):
         _items = []
         if self.created_by:
             for _item_created_by in self.created_by:
-                if _item_created_by:
-                    _items.append(_item_created_by.to_dict())
+                _items.append(_item_created_by.to_dict() if _item_created_by is not None else None)
             _dict['createdBy'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in genres (list)
         _items = []
         if self.genres:
             for _item_genres in self.genres:
-                if _item_genres:
-                    _items.append(_item_genres.to_dict())
+                _items.append(_item_genres.to_dict() if _item_genres is not None else None)
             _dict['genres'] = _items
         # override the default output from pydantic by calling `to_dict()` of last_episode_to_air
         if self.last_episode_to_air:
@@ -148,36 +146,31 @@ class TvDetails(BaseModel):
         _items = []
         if self.networks:
             for _item_networks in self.networks:
-                if _item_networks:
-                    _items.append(_item_networks.to_dict())
+                _items.append(_item_networks.to_dict() if _item_networks is not None else None)
             _dict['networks'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in production_companies (list)
         _items = []
         if self.production_companies:
             for _item_production_companies in self.production_companies:
-                if _item_production_companies:
-                    _items.append(_item_production_companies.to_dict())
+                _items.append(_item_production_companies.to_dict() if _item_production_companies is not None else None)
             _dict['productionCompanies'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in production_countries (list)
         _items = []
         if self.production_countries:
             for _item_production_countries in self.production_countries:
-                if _item_production_countries:
-                    _items.append(_item_production_countries.to_dict())
+                _items.append(_item_production_countries.to_dict() if _item_production_countries is not None else None)
             _dict['productionCountries'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in spoken_languages (list)
         _items = []
         if self.spoken_languages:
             for _item_spoken_languages in self.spoken_languages:
-                if _item_spoken_languages:
-                    _items.append(_item_spoken_languages.to_dict())
+                _items.append(_item_spoken_languages.to_dict() if _item_spoken_languages is not None else None)
             _dict['spokenLanguages'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in seasons (list)
         _items = []
         if self.seasons:
             for _item_seasons in self.seasons:
-                if _item_seasons:
-                    _items.append(_item_seasons.to_dict())
+                _items.append(_item_seasons.to_dict() if _item_seasons is not None else None)
             _dict['seasons'] = _items
         # override the default output from pydantic by calling `to_dict()` of credits
         if self.credits:
@@ -189,8 +182,7 @@ class TvDetails(BaseModel):
         _items = []
         if self.keywords:
             for _item_keywords in self.keywords:
-                if _item_keywords:
-                    _items.append(_item_keywords.to_dict())
+                _items.append(_item_keywords.to_dict() if _item_keywords is not None else None)
             _dict['keywords'] = _items
         # override the default output from pydantic by calling `to_dict()` of media_info
         if self.media_info:
@@ -199,10 +191,9 @@ class TvDetails(BaseModel):
         _items = []
         if self.watch_providers:
             for _item_watch_providers in self.watch_providers:
-                if _item_watch_providers:
-                    _items.append(
-                         [_inner_item.to_dict() for _inner_item in _item_watch_providers if _inner_item is not None]
-                    )
+                _items.append(
+                     [_inner_item.to_dict() if _inner_item is not None else None for _inner_item in _item_watch_providers] if _item_watch_providers is not None else None
+                )
             _dict['watchProviders'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:
@@ -258,7 +249,7 @@ class TvDetails(BaseModel):
             "keywords": [Keyword.from_dict(_item) for _item in obj["keywords"]] if obj.get("keywords") is not None else None,
             "mediaInfo": MediaInfo.from_dict(obj["mediaInfo"]) if obj.get("mediaInfo") is not None else None,
             "watchProviders": [
-                    [WatchProvidersInner.from_dict(_inner_item) for _inner_item in _item]
+                    [WatchProvidersInner.from_dict(_inner_item) for _inner_item in _item] if _item is not None else None
                     for _item in obj["watchProviders"]
                 ] if obj.get("watchProviders") is not None else None
         })

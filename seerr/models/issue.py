@@ -93,8 +93,7 @@ class Issue(BaseModel):
         _items = []
         if self.comments:
             for _item_comments in self.comments:
-                if _item_comments:
-                    _items.append(_item_comments.to_dict())
+                _items.append(_item_comments.to_dict() if _item_comments is not None else None)
             _dict['comments'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

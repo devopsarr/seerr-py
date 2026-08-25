@@ -82,8 +82,7 @@ class GetCache2XXResponseDnsCache(BaseModel):
         _field_dict = {}
         if self.entries:
             for _key_entries in self.entries:
-                if self.entries[_key_entries]:
-                    _field_dict[_key_entries] = self.entries[_key_entries].to_dict()
+                _field_dict[_key_entries] = self.entries[_key_entries].to_dict() if self.entries[_key_entries] is not None else None
             _dict['entries'] = _field_dict
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

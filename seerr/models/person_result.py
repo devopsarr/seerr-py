@@ -81,8 +81,7 @@ class PersonResult(BaseModel):
         _items = []
         if self.known_for:
             for _item_known_for in self.known_for:
-                if _item_known_for:
-                    _items.append(_item_known_for.to_dict())
+                _items.append(_item_known_for.to_dict() if _item_known_for is not None else None)
             _dict['knownFor'] = _items
         # puts key-value pairs in additional_properties in the top level
         if self.additional_properties is not None:

@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost:5055/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_overriderule**](OverrideruleApi.md#create_overriderule) | **POST** /overrideRule | Create override rule
+[**create_overriderule_advanced_request**](OverrideruleApi.md#create_overriderule_advanced_request) | **POST** /overrideRule/advancedRequest | Advanced override rule request
 [**delete_overriderule**](OverrideruleApi.md#delete_overriderule) | **DELETE** /overrideRule/{ruleId} | Delete override rule by ID
 [**list_overriderule**](OverrideruleApi.md#list_overriderule) | **GET** /overrideRule | Get override rules
 [**update_overriderule**](OverrideruleApi.md#update_overriderule) | **PUT** /overrideRule/{ruleId} | Update override rule
@@ -89,6 +90,96 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **2XX** | Values were successfully created |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_overriderule_advanced_request**
+> CreateOverrideruleAdvancedRequest2XXResponse create_overriderule_advanced_request(create_overriderule_advanced_request_request)
+
+Advanced override rule request
+
+Processes an advanced override rule request.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.create_overriderule_advanced_request2_xx_response import CreateOverrideruleAdvancedRequest2XXResponse
+from seerr.models.create_overriderule_advanced_request_request import CreateOverrideruleAdvancedRequestRequest
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.OverrideruleApi(api_client)
+    create_overriderule_advanced_request_request = seerr.CreateOverrideruleAdvancedRequestRequest() # CreateOverrideruleAdvancedRequestRequest | 
+
+    try:
+        # Advanced override rule request
+        api_response = api_instance.create_overriderule_advanced_request(create_overriderule_advanced_request_request)
+        print("The response of OverrideruleApi->create_overriderule_advanced_request:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling OverrideruleApi->create_overriderule_advanced_request: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_overriderule_advanced_request_request** | [**CreateOverrideruleAdvancedRequestRequest**](CreateOverrideruleAdvancedRequestRequest.md)|  | 
+
+### Return type
+
+[**CreateOverrideruleAdvancedRequest2XXResponse**](CreateOverrideruleAdvancedRequest2XXResponse.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**403** | User does not have permission to modify the request user |  -  |
+**404** | User, media or request not found |  -  |
+**500** | Unable to evaluate override rules |  -  |
+**2XX** | Advanced override rule request processed |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

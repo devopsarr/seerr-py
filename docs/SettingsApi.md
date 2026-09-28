@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**create_discover_add**](SettingsApi.md#create_discover_add) | **POST** /settings/discover/add | Add a new slider
 [**create_initialize**](SettingsApi.md#create_initialize) | **POST** /settings/initialize | Initialize application
 [**create_jellyfin**](SettingsApi.md#create_jellyfin) | **POST** /settings/jellyfin | Update Jellyfin settings
+[**create_jellyfin_library_sync**](SettingsApi.md#create_jellyfin_library_sync) | **POST** /settings/jellyfin/library/sync | Sync Jellyfin libraries
 [**create_jellyfin_sync**](SettingsApi.md#create_jellyfin_sync) | **POST** /settings/jellyfin/sync | Start full Jellyfin library sync
 [**create_jobs_cancel**](SettingsApi.md#create_jobs_cancel) | **POST** /settings/jobs/{jobId}/cancel | Cancel a specific job
 [**create_jobs_run**](SettingsApi.md#create_jobs_run) | **POST** /settings/jobs/{jobId}/run | Invoke a specific job
@@ -28,6 +29,7 @@ Method | HTTP request | Description
 [**create_notifications_webhook**](SettingsApi.md#create_notifications_webhook) | **POST** /settings/notifications/webhook | Update webhook notification settings
 [**create_notifications_webpush**](SettingsApi.md#create_notifications_webpush) | **POST** /settings/notifications/webpush | Update Web Push notification settings
 [**create_plex**](SettingsApi.md#create_plex) | **POST** /settings/plex | Update Plex settings
+[**create_plex_library_sync**](SettingsApi.md#create_plex_library_sync) | **POST** /settings/plex/library/sync | Sync Plex libraries
 [**create_plex_sync**](SettingsApi.md#create_plex_sync) | **POST** /settings/plex/sync | Start full Plex library scan
 [**create_radarr**](SettingsApi.md#create_radarr) | **POST** /settings/radarr | Create Radarr instance
 [**create_sonarr**](SettingsApi.md#create_sonarr) | **POST** /settings/sonarr | Create Sonarr instance
@@ -84,6 +86,8 @@ Method | HTTP request | Description
 [**test_radarr**](SettingsApi.md#test_radarr) | **POST** /settings/radarr/test | Test Radarr configuration
 [**test_sonarr**](SettingsApi.md#test_sonarr) | **POST** /settings/sonarr/test | Test Sonarr configuration
 [**update_discover**](SettingsApi.md#update_discover) | **PUT** /settings/discover/{sliderId} | Update a single slider
+[**update_jellyfin_library**](SettingsApi.md#update_jellyfin_library) | **PUT** /settings/jellyfin/library/{libraryId} | Update a single Jellyfin library
+[**update_plex_library**](SettingsApi.md#update_plex_library) | **PUT** /settings/plex/library/{libraryId} | Update a single Plex library
 [**update_radarr**](SettingsApi.md#update_radarr) | **PUT** /settings/radarr/{radarrId} | Update Radarr instance
 [**update_sonarr**](SettingsApi.md#update_sonarr) | **PUT** /settings/sonarr/{sonarrId} | Update Sonarr instance
 
@@ -596,6 +600,90 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **2XX** | Values were successfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_jellyfin_library_sync**
+> List[JellyfinLibrary] create_jellyfin_library_sync()
+
+Sync Jellyfin libraries
+
+Syncs the current libraries with the current Jellyfin server. Enabled flags are preserved.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.jellyfin_library import JellyfinLibrary
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Sync Jellyfin libraries
+        api_response = api_instance.create_jellyfin_library_sync()
+        print("The response of SettingsApi->create_jellyfin_library_sync:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_jellyfin_library_sync: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[JellyfinLibrary]**](JellyfinLibrary.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**404** | No libraries found |  -  |
+**501** | Automatic library grouping is not supported |  -  |
+**2XX** | Jellyfin libraries returned |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2144,6 +2232,88 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **2XX** | Values were successfully updated |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_plex_library_sync**
+> List[PlexLibrary] create_plex_library_sync()
+
+Sync Plex libraries
+
+Syncs the current libraries with the current Plex server. Enabled flags are preserved.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.plex_library import PlexLibrary
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+
+    try:
+        # Sync Plex libraries
+        api_response = api_instance.create_plex_library_sync()
+        print("The response of SettingsApi->create_plex_library_sync:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->create_plex_library_sync: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[PlexLibrary]**](PlexLibrary.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**2XX** | Plex libraries returned |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4616,7 +4786,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_jellyfin_library**
-> List[JellyfinLibrary] list_jellyfin_library(sync=sync, enable=enable)
+> List[JellyfinLibrary] list_jellyfin_library()
 
 Get Jellyfin libraries
 
@@ -4660,12 +4830,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with seerr.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = seerr.SettingsApi(api_client)
-    sync = 'sync_example' # str | Syncs the current libraries with the current Jellyfin server (optional)
-    enable = 'enable_example' # str | Comma separated list of libraries to enable. Any libraries not passed will be disabled! (optional)
 
     try:
         # Get Jellyfin libraries
-        api_response = api_instance.list_jellyfin_library(sync=sync, enable=enable)
+        api_response = api_instance.list_jellyfin_library()
         print("The response of SettingsApi->list_jellyfin_library:\n")
         pprint(api_response)
     except Exception as e:
@@ -4676,11 +4844,7 @@ with seerr.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sync** | **str**| Syncs the current libraries with the current Jellyfin server | [optional] 
- **enable** | **str**| Comma separated list of libraries to enable. Any libraries not passed will be disabled! | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -5128,7 +5292,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_plex_library**
-> List[PlexLibrary] list_plex_library(sync=sync, enable=enable)
+> List[PlexLibrary] list_plex_library()
 
 Get Plex libraries
 
@@ -5172,12 +5336,10 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with seerr.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = seerr.SettingsApi(api_client)
-    sync = 'sync_example' # str | Syncs the current libraries with the current Plex server (optional)
-    enable = 'enable_example' # str | Comma separated list of libraries to enable. Any libraries not passed will be disabled! (optional)
 
     try:
         # Get Plex libraries
-        api_response = api_instance.list_plex_library(sync=sync, enable=enable)
+        api_response = api_instance.list_plex_library()
         print("The response of SettingsApi->list_plex_library:\n")
         pprint(api_response)
     except Exception as e:
@@ -5188,11 +5350,7 @@ with seerr.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sync** | **str**| Syncs the current libraries with the current Plex server | [optional] 
- **enable** | **str**| Comma separated list of libraries to enable. Any libraries not passed will be disabled! | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -6824,6 +6982,188 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **2XX** | Returns newly added discovery slider |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_jellyfin_library**
+> JellyfinLibrary update_jellyfin_library(library_id, update_jellyfin_library_request)
+
+Update a single Jellyfin library
+
+Updates a single Jellyfin library with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.jellyfin_library import JellyfinLibrary
+from seerr.models.update_jellyfin_library_request import UpdateJellyfinLibraryRequest
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    library_id = 'library_id_example' # str | 
+    update_jellyfin_library_request = seerr.UpdateJellyfinLibraryRequest() # UpdateJellyfinLibraryRequest | 
+
+    try:
+        # Update a single Jellyfin library
+        api_response = api_instance.update_jellyfin_library(library_id, update_jellyfin_library_request)
+        print("The response of SettingsApi->update_jellyfin_library:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->update_jellyfin_library: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **library_id** | **str**|  | 
+ **update_jellyfin_library_request** | [**UpdateJellyfinLibraryRequest**](UpdateJellyfinLibraryRequest.md)|  | 
+
+### Return type
+
+[**JellyfinLibrary**](JellyfinLibrary.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** | Invalid request body |  -  |
+**404** | Library does not exist |  -  |
+**2XX** | Jellyfin library returned |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_plex_library**
+> PlexLibrary update_plex_library(library_id, update_jellyfin_library_request)
+
+Update a single Plex library
+
+Updates a single Plex library with the provided values.
+
+### Example
+
+* Api Key Authentication (apiKey):
+* Api Key Authentication (cookieAuth):
+
+```python
+import seerr
+from seerr.models.plex_library import PlexLibrary
+from seerr.models.update_jellyfin_library_request import UpdateJellyfinLibraryRequest
+from seerr.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://localhost:5055/api/v1
+# See configuration.py for a list of all supported configuration parameters.
+configuration = seerr.Configuration(
+    host = "http://localhost:5055/api/v1"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: apiKey
+configuration.api_key['apiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['apiKey'] = 'Bearer'
+
+# Configure API key authorization: cookieAuth
+configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['cookieAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with seerr.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = seerr.SettingsApi(api_client)
+    library_id = 'library_id_example' # str | 
+    update_jellyfin_library_request = seerr.UpdateJellyfinLibraryRequest() # UpdateJellyfinLibraryRequest | 
+
+    try:
+        # Update a single Plex library
+        api_response = api_instance.update_plex_library(library_id, update_jellyfin_library_request)
+        print("The response of SettingsApi->update_plex_library:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling SettingsApi->update_plex_library: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **library_id** | **str**|  | 
+ **update_jellyfin_library_request** | [**UpdateJellyfinLibraryRequest**](UpdateJellyfinLibraryRequest.md)|  | 
+
+### Return type
+
+[**PlexLibrary**](PlexLibrary.md)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [cookieAuth](../README.md#cookieAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**400** | Invalid request body |  -  |
+**404** | Library does not exist |  -  |
+**2XX** | Plex library returned |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

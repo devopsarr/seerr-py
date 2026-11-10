@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **str** |  | [optional] 
 **topic** | **str** |  | [optional] 
+**tags** | **str** |  | [optional] 
 **auth_method_username_password** | **bool** |  | [optional] 
 **username** | **str** |  | [optional] 
 **password** | **str** |  | [optional] 

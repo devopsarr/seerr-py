@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **application_title** | **str** |  | [optional] 
 **application_url** | **str** |  | [optional] 
 **hide_available** | **bool** |  | [optional] 
+**hide_requested** | **bool** |  | [optional] 
 **partial_requests_enabled** | **bool** |  | [optional] 
 **local_login** | **bool** |  | [optional] 
 **media_server_type** | **float** |  | [optional] 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **create_watchlist**
-> Watchlist create_watchlist(watchlist)
+> Watchlist create_watchlist(watchlist_request)
 
 Add media to watchlist
 
@@ -21,6 +21,7 @@ Add media to watchlist
 ```python
 import seerr
 from seerr.models.watchlist import Watchlist
+from seerr.models.watchlist_request import WatchlistRequest
 from seerr.rest import ApiException
 from pprint import pprint
 
@@ -51,11 +52,11 @@ configuration.api_key['cookieAuth'] = os.environ["API_KEY"]
 with seerr.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = seerr.WatchlistApi(api_client)
-    watchlist = seerr.Watchlist() # Watchlist | 
+    watchlist_request = seerr.WatchlistRequest() # WatchlistRequest | 
 
     try:
         # Add media to watchlist
-        api_response = api_instance.create_watchlist(watchlist)
+        api_response = api_instance.create_watchlist(watchlist_request)
         print("The response of WatchlistApi->create_watchlist:\n")
         pprint(api_response)
     except Exception as e:
@@ -69,7 +70,7 @@ with seerr.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **watchlist** | [**Watchlist**](Watchlist.md)|  | 
+ **watchlist_request** | [**WatchlistRequest**](WatchlistRequest.md)|  | 
 
 ### Return type
 
@@ -88,7 +89,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**2XX** | Watchlist data returned |  -  |
+**201** | Watchlist data returned |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
